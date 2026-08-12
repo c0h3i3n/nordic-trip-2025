@@ -28,6 +28,15 @@ test("server-renders the Nordic Summer itinerary", async () => {
   assert.match(html, /Copenhagen Zoo/);
   assert.match(html, /Gamla stan/);
   assert.match(html, /曼谷 → 台北/);
+  assert.match(html, /WHAT WE ATE \/ 這天吃什麼/);
+  assert.match(html, /餐食只整理到照片與移動情境能支持的程度/);
+  assert.match(html, /長途航班機上早餐；抵達倫敦後簡單用餐/);
+
+  const dailyPhotos = html.match(/<img\b[^>]*src="journey\/day-\d{2}-[^"]+\.jpg"[^>]*>/g) ?? [];
+  assert.equal(dailyPhotos.length, 18, "renders one representative photo for every itinerary day");
+  assert.match(dailyPhotos[0], /loading="eager"/);
+  for (const photo of dailyPhotos.slice(1)) assert.match(photo, /loading="lazy"/);
+
   assert.doesNotMatch(html, /Warner Bros|Tivoli Gardens|Junibacken|Fjäderholmarna/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/i);
 });

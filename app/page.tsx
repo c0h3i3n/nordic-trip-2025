@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable @next/next/no-img-element */
 
 import { useMemo, useState } from "react";
 
@@ -11,6 +12,13 @@ type Stop = {
   move?: string;
   note?: string;
   icon: string;
+};
+
+type DayMedia = {
+  photo: string;
+  alt: string;
+  food: string;
+  position?: string;
 };
 
 const stops: Stop[] = [
@@ -32,6 +40,27 @@ const stops: Stop[] = [
   { date: "7.27", city: "斯德哥爾摩", title: "Skansen 一整天", detail: "走進露天博物館，看歷史建築、花園與北歐動物，把最後一個完整日留給 Skansen。", stay: "Scandic Wallin", move: "電車＋步行", note: "園區很大，好走的鞋派上用場，大家照自己的速度慢慢逛。", icon: "⚑" },
   { date: "7.28", city: "移動日", title: "斯德哥爾摩 → 曼谷", detail: "退房後搭機場鐵路到 Arlanda、完成退稅；13:50 搭乘泰航飛往曼谷。", stay: "機上", move: "Arlanda Express＋飛機", note: "護照、退稅文件與重要物品全部隨身攜帶。", icon: "✈" },
   { date: "7.29", city: "移動日", title: "曼谷 → 台北", detail: "在曼谷轉機後續飛台北，13:05 抵達桃園；領回行李，也把 18 天帶回家。", stay: "回到家", move: "BKK · TPE", note: "旅程在行李轉盤旁收尾，照片則把每一天重新帶回眼前。", icon: "✈" },
+];
+
+const dayMedia: DayMedia[] = [
+  { photo: "journey/day-01-departure.jpg", alt: "機場航廈裡準備出發的旅行風景", food: "泰航機上餐；曼谷轉機時補充飲料與點心。" },
+  { photo: "journey/day-02-british-museum.jpg", alt: "倫敦大英博物館外觀", food: "長途航班機上早餐；抵達倫敦後簡單用餐，照片沒有留下可確認的店名。" },
+  { photo: "journey/day-03-royal-mews.jpg", alt: "皇家馬廄裡的典藏展示", food: "倫敦市區用餐；照片沒有留下可確認的店名與品項。" },
+  { photo: "journey/day-04-london-bus.jpg", alt: "紅色敞篷觀光巴士穿過倫敦街景", food: "在 Five Guys 用餐。" },
+  { photo: "journey/day-05-science-museum.jpg", alt: "科學博物館裡色彩鮮明的實驗展示", food: "博物館日簡單用餐；照片沒有留下可確認的品項。" },
+  { photo: "journey/day-06-oxford.jpg", alt: "Oxford 學院裡覆滿綠意的石造迴廊", food: "Oxford 市區用餐與途中點心；照片沒有留下可確認的店名。" },
+  { photo: "journey/day-07-billund-cabin.jpg", alt: "比隆假日村裡的紅色木屋", food: "機場點心；抵達木屋後自煮義大利麵與煎肉丁。" },
+  { photo: "journey/day-08-legoland.jpg", alt: "LEGOLAND 園區裡的積木海盜船水景", food: "LEGOLAND 園區內簡單用餐；晚餐回木屋解決。" },
+  { photo: "journey/day-09-lego-house.jpg", alt: "LEGO House 裡的樂高歷史展示", food: "LEGO House 與移動途中簡單吃；沒有留下可確認的店名或品項。" },
+  { photo: "journey/day-10-nyhavn.jpg", alt: "Nyhavn 運河旁的一排彩色房屋", food: "超市採買飲料、牛奶、米與零食，回飯店簡單吃。" },
+  { photo: "journey/day-11-copenhagen-zoo.jpg", alt: "Copenhagen Zoo 園區裡的動物棲地", food: "動物園內簡單用餐；沒有留下清楚餐點照片。" },
+  { photo: "journey/day-12-copenhagen-city.jpg", alt: "哥本哈根市中心的廣場與街景", food: "互動科學館與市中心途中用餐；沒有留下可確認的品項。" },
+  { photo: "journey/day-13-kastrup.jpg", alt: "Kastrup 海濱碼頭與飯店風景", food: "Kastrup 街區採買與簡單外食；照片沒有留下可確認的店名。" },
+  { photo: "journey/day-14-stockholm-metro.jpg", alt: "前往斯德哥爾摩途中所見的城市交通風景", food: "白天在 Kastrup 簡單用餐；晚班機前後以機場餐食為主。" },
+  { photo: "journey/day-15-gamla-stan.jpg", alt: "Gamla stan 老城的石板街道與建築", food: "Gamla stan 散步途中用餐；照片沒有留下可確認的店名與品項。" },
+  { photo: "journey/day-16-skansen.jpg", alt: "Skansen 園區裡的北歐歷史建築與綠地", food: "Skansen 園區內簡單用餐；品項沒有拍清楚。" },
+  { photo: "journey/day-17-arlanda.jpg", alt: "Arlanda 機場裡準備返程的航班風景", food: "Arlanda 機場餐食與泰航機上餐。" },
+  { photo: "journey/day-18-homecoming.jpg", alt: "返抵桃園機場時的行李轉盤", food: "曼谷轉機點心與返台航段機上餐。" },
 ];
 
 const filters = ["全部", "倫敦", "比隆", "哥本哈根", "斯德哥爾摩", "移動日"] as const;
@@ -81,18 +110,22 @@ export default function Home() {
 
       <section className="days" id="days">
         <div className="wrap">
-          <div className="days-head"><div><p className="eyebrow">DAY BY DAY</p><h2>每日行程</h2></div><p>點開每一天，查看住宿、交通與親子提醒。</p></div>
+          <div className="days-head"><div><p className="eyebrow">DAY BY DAY</p><h2>每日行程</h2></div><p>點開每一天，查看住宿、交通、親子提醒與餐食紀錄。</p></div>
+          <p className="food-source-note"><span>ABOUT THE MEALS</span>餐食只整理到照片與移動情境能支持的程度；沒有拍清楚的店名和品項不臆測。</p>
           <div className="filters" role="group" aria-label="依城市篩選">
             {filters.map((item) => <button key={item} className={filter === item ? "active" : ""} onClick={() => { setFilter(item); setOpen(null); }}>{item}</button>)}
           </div>
           <div className="timeline">
-            {visible.map((stop) => { const index = stops.indexOf(stop); const expanded = open === index; return (
+            {visible.map((stop) => { const index = stops.indexOf(stop); const media = dayMedia[index]; const expanded = open === index; return (
               <article className={`day-card ${expanded ? "expanded" : ""}`} key={`${stop.date}-${stop.title}`}>
                 <button className="day-summary" onClick={() => setOpen(expanded ? null : index)} aria-expanded={expanded}>
-                  <span className="date">{stop.date}</span><span className="day-icon">{stop.icon}</span><span className="day-title"><small>{stop.city}</small><strong>{stop.title}</strong><em>{stop.detail}</em></span><span className="plus">{expanded ? "−" : "+"}</span>
+                  <span className="date">{stop.date}</span><span className="day-icon">{stop.icon}</span><span className="day-title"><small>{stop.city}</small><strong>{stop.title}</strong><em>{stop.detail}</em></span>
+                  <span className="day-photo"><img src={media.photo} alt={media.alt} width="720" height="480" loading={index === 0 ? "eager" : "lazy"} fetchPriority={index === 0 ? "high" : undefined} decoding="async" style={media.position ? { objectPosition: media.position } : undefined} /></span>
+                  <span className="plus">{expanded ? "−" : "+"}</span>
                 </button>
                 {expanded && <div className="day-detail">
                   <div><small>STAY</small><p>{stop.stay ?? "—"}</p></div><div><small>GETTING AROUND</small><p>{stop.move ?? "—"}</p></div><div><small>FAMILY NOTE</small><p>{stop.note ?? "—"}</p></div>
+                  <div className="meal-detail"><small>WHAT WE ATE / 這天吃什麼</small><p>{media.food}</p></div>
                 </div>}
               </article>
             );})}
