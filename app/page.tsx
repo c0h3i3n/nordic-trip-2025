@@ -14,23 +14,24 @@ type Stop = {
 };
 
 const stops: Stop[] = [
-  { date: "7.12–13", city: "移動日", title: "台北 → 倫敦", detail: "搭乘泰航經曼谷轉機，隔日 07:15 抵達 Heathrow。", move: "TPE · BKK · LHR", note: "旅行文件與隨身必需品放在手提行李。", icon: "✈" },
-  { date: "7.13", city: "倫敦", title: "泰晤士河初見", detail: "London Eye、泰晤士河遊船，晚上到 Lyceum Theatre 欣賞《獅子王》。", stay: "Premier Inn London City（Old Street）", move: "地鐵＋步行", note: "表演後在 Shoreditch 吃晚餐。", icon: "◉" },
-  { date: "7.14", city: "倫敦", title: "走進魔法世界", detail: "Warner Bros. Studio Tour，從 Euston 搭火車前往 Watford Junction。", stay: "Premier Inn London City（Old Street）", move: "地鐵＋火車＋接駁車", note: "行程較長，記得準備點心。", icon: "✦" },
-  { date: "7.15", city: "倫敦", title: "恐龍與自然史", detail: "Natural History Museum 恐龍展；參觀後移動到 Earl’s Court 入住。", stay: "Premier Inn Kensington（Earl’s Court）", move: "地鐵約 25 分鐘", note: "輕鬆又有教育性的博物館日。", icon: "◆" },
-  { date: "7.16", city: "倫敦", title: "科學、藝術與公園", detail: "上午 Science Museum；午後依體力選 V&A Museum 或 Hyde Park 散步。", stay: "Premier Inn Kensington（Earl’s Court）", move: "步行＋地鐵", note: "中間安排午茶與休息。", icon: "⌁" },
-  { date: "7.17", city: "倫敦", title: "海德公園慢慢玩", detail: "Diana Memorial Playground 放風，替隔天移動保留體力。", stay: "Premier Inn Kensington（Earl’s Court）", move: "步行約 15 分鐘", note: "旅行中的留白，也是孩子最愛的一天。", icon: "☼" },
-  { date: "7.18", city: "移動日", title: "倫敦 → 比隆", detail: "15:35 從 Gatwick 起飛，17:10 抵達 Billund，入住樂高主題度假村。", stay: "LEGOLAND Holiday Village", move: "火車＋飛機＋計程車", note: "提早入住，為樂高日養足精神。", icon: "✈" },
-  { date: "7.19", city: "比隆", title: "LEGOLAND 一整天", detail: "10:00 入園，一路玩到傍晚；從 Holiday Village 步行即可抵達。", stay: "LEGOLAND Holiday Village", move: "步行約 5 分鐘", note: "這趟旅程最期待的親子主場。", icon: "▦" },
-  { date: "7.20", city: "移動日", title: "LEGO House → 哥本哈根", detail: "上午探索 LEGO House，傍晚搭火車前往哥本哈根。", stay: "ibis Styles Copenhagen Ørestad", move: "步行＋火車", note: "門票預先訂妥，移動時間留彈性。", icon: "▤" },
-  { date: "7.21", city: "哥本哈根", title: "童話港灣與樂園", detail: "Tivoli Gardens 玩樂，再到 Nyhavn 看彩色屋與運河風景。", stay: "ibis Styles Copenhagen Ørestad", move: "地鐵＋步行", note: "Tivoli Food Hall 適合全家各自挑餐。", icon: "✺" },
-  { date: "7.22", city: "哥本哈根", title: "科學實驗與小美人魚", detail: "Experimentarium 動手玩科學，午後沿海岸走訪 Little Mermaid。", stay: "ibis Styles Copenhagen Ørestad", move: "地鐵＋步行", note: "室內與戶外交錯，節奏剛剛好。", icon: "≈" },
-  { date: "7.23", city: "哥本哈根", title: "丹麥故事與 LEGO 補給", detail: "National Museum 認識丹麥歷史，最後到 LEGO Store 採買。", stay: "ibis Styles Copenhagen Ørestad", move: "步行", note: "一段舒服、好逛的市中心路線。", icon: "◇" },
-  { date: "7.24", city: "哥本哈根", title: "陸地動物與海底世界", detail: "上午 Copenhagen Zoo，下午 Den Blå Planet 國家水族館。", stay: "Scandic CPH Strandpark", move: "火車＋地鐵＋步行", note: "同一天收集動物園與水族館。", icon: "◎" },
-  { date: "7.25", city: "移動日", title: "哥本哈根 → 斯德哥爾摩", detail: "20:20 起飛，21:30 抵達 Stockholm，展開旅程最後一站。", stay: "Scandic Wallin", move: "地鐵＋飛機", note: "短程飛行，白天仍可從容活動。", icon: "✈" },
-  { date: "7.26", city: "斯德哥爾摩", title: "走進北歐童話", detail: "Junibacken 兒童文化中心，和經典故事角色度過悠閒一天。", stay: "Scandic Wallin", move: "步行＋電車", note: "孩子的童話站，也是大人的北歐回憶。", icon: "♢" },
-  { date: "7.27", city: "斯德哥爾摩", title: "露天博物館與島嶼 fika", detail: "上午 Skansen；下午搭船到 Fjäderholmarna 散步、喝咖啡、看手作。", stay: "Scandic Wallin", move: "步行＋電車＋渡輪", note: "帶外套、點心與相機，慢慢看船。", icon: "⚑" },
-  { date: "7.28–29", city: "移動日", title: "斯德哥爾摩 → 台北", detail: "13:50 從 Arlanda 起飛，經曼谷轉機，隔日 13:05 抵達台北。", move: "Arlanda Express＋飛機", note: "11:00 前離開飯店，重要物品隨身攜帶。", icon: "✈" },
+  { date: "7.12", city: "移動日", title: "台北 → 曼谷", detail: "從桃園出發，搭乘泰航抵達曼谷蘇凡納布機場，再轉機續飛倫敦。", stay: "機上／曼谷轉機", move: "TPE · BKK", note: "文件、藥品與過夜用品都放在手提行李。", icon: "✈" },
+  { date: "7.13", city: "倫敦", title: "曼谷 → 倫敦・大英博物館", detail: "07:15 飛抵 Heathrow；進城後走進 British Museum 的 Great Court 與展廳。", stay: "Premier Inn London City（Old Street）", move: "飛機＋大眾運輸＋步行", note: "長途飛行後只安排一個主角，慢慢調整時差。", icon: "◉" },
+  { date: "7.14", city: "倫敦", title: "西敏與皇家馬廄", detail: "從 Big Ben、國會大廈一路走到 Royal Mews，再穿過 St James’s Park。", stay: "Premier Inn London City（Old Street）", move: "地鐵＋步行", note: "第一個完整倫敦日，就從最經典的城市風景開始。", icon: "✦" },
+  { date: "7.15", city: "倫敦", title: "敞篷巴士看倫敦", detail: "搭乘 open-top sightseeing bus 穿過市中心；這天也換住 Earl’s Court。", stay: "Premier Inn Kensington（Earl’s Court）", move: "觀光巴士＋地鐵", note: "坐著看城市，也替接下來的博物館日保留體力。", icon: "◆" },
+  { date: "7.16", city: "倫敦", title: "科學與自然史", detail: "在 Science Museum 動手探索，再到 Natural History Museum 與花園看自然萬象。", stay: "Premier Inn Kensington（Earl’s Court）", move: "步行", note: "兩座博物館就在隔壁，中間隨時可以停下來休息。", icon: "⌁" },
+  { date: "7.17", city: "倫敦", title: "Oxford 學院一日遊", detail: "從倫敦當日往返，走訪 Christ Church、Tom Quad、Great Hall 與學院迴廊。", stay: "Premier Inn Kensington（Earl’s Court）", move: "火車＋步行", note: "大學城石板路走得多，點心與輕便雨具都很有用。", icon: "☼" },
+  { date: "7.18", city: "移動日", title: "倫敦 → 比隆", detail: "15:35 從 Gatwick 起飛，17:10 抵達 Billund；入住木屋後採買、煮晚餐。", stay: "LEGOLAND Holiday Village", move: "火車＋飛機＋計程車", note: "抵達後沒有再排景點，木屋裡的第一頓晚餐就是旅行風景。", icon: "✈" },
+  { date: "7.19", city: "比隆", title: "LEGOLAND 一整天", detail: "10:00 入園，從 Miniland 一路玩到各式遊樂設施，傍晚再回木屋吃飯。", stay: "LEGOLAND Holiday Village", move: "步行約 5 分鐘", note: "把一整天完整留給孩子最期待的樂高主場。", icon: "▦" },
+  { date: "7.20", city: "移動日", title: "LEGO House → 哥本哈根", detail: "上午探索 LEGO House 與 Tree of Creativity，午後橫越丹麥前往哥本哈根。", stay: "ibis Styles Copenhagen Ørestad", move: "公車＋火車＋步行", note: "玩完再移動，抵達新城市後只辦入住、好好休息。", icon: "▤" },
+  { date: "7.21", city: "哥本哈根", title: "小美人魚與彩色港灣", detail: "沿海走到 Little Mermaid，再穿過城市水岸，在 Nyhavn 看彩色屋與運河。", stay: "ibis Styles Copenhagen Ørestad", move: "地鐵＋公車＋步行", note: "下雨的港灣有另一種顏色，雨衣比撐傘更方便。", icon: "✺" },
+  { date: "7.22", city: "哥本哈根", title: "雨中的 Copenhagen Zoo", detail: "前往 Frederiksberg 的 Copenhagen Zoo，在雨裡慢慢看動物與園區風景。", stay: "ibis Styles Copenhagen Ørestad", move: "地鐵＋公車＋步行", note: "雨具、替換衣物和幾段室內休息，讓全家繼續玩得自在。", icon: "◎" },
+  { date: "7.23", city: "哥本哈根", title: "科學體驗與 LEGO 補給", detail: "在互動科學館玩工程、光學與泡泡展項，再回到市中心逛 LEGO Store。", stay: "ibis Styles Copenhagen Ørestad", move: "地鐵＋步行", note: "讓孩子自己動手的展館，常常比趕下一個景點更值得。", icon: "≈" },
+  { date: "7.24", city: "哥本哈根", title: "轉住 Kastrup・海濱慢行", detail: "換住機場附近的 Kastrup；在碼頭、海濱與街區散步，也留時間採買和休息。", stay: "Scandic CPH Strandpark", move: "地鐵＋火車＋步行", note: "旅程中段刻意放慢，整理行李也整理這幾天的回憶。", icon: "◇" },
+  { date: "7.25", city: "移動日", title: "哥本哈根 → 斯德哥爾摩", detail: "白天留在 Kastrup 海邊；20:20 起飛，21:30 抵達 Stockholm 後進城入住。", stay: "Scandic Wallin", move: "步行＋地鐵＋飛機＋機場鐵路", note: "晚班機抵達後沒有再排活動，順利到飯店就是今天的終點。", icon: "✈" },
+  { date: "7.26", city: "斯德哥爾摩", title: "老城石板路漫遊", detail: "走過 Gamla stan 與 Riddarholmen 的石板路，再回 Norrmalm 逛街、喝咖啡、看水岸。", stay: "Scandic Wallin", move: "地鐵＋步行", note: "老城最適合慢慢走，也要替孩子安排隨時停下來的空間。", icon: "♢" },
+  { date: "7.27", city: "斯德哥爾摩", title: "Skansen 一整天", detail: "走進露天博物館，看歷史建築、花園與北歐動物，把最後一個完整日留給 Skansen。", stay: "Scandic Wallin", move: "電車＋步行", note: "園區很大，好走的鞋派上用場，大家照自己的速度慢慢逛。", icon: "⚑" },
+  { date: "7.28", city: "移動日", title: "斯德哥爾摩 → 曼谷", detail: "退房後搭機場鐵路到 Arlanda、完成退稅；13:50 搭乘泰航飛往曼谷。", stay: "機上", move: "Arlanda Express＋飛機", note: "護照、退稅文件與重要物品全部隨身攜帶。", icon: "✈" },
+  { date: "7.29", city: "移動日", title: "曼谷 → 台北", detail: "在曼谷轉機後續飛台北，13:05 抵達桃園；領回行李，也把 18 天帶回家。", stay: "回到家", move: "BKK · TPE", note: "旅程在行李轉盤旁收尾，照片則把每一天重新帶回眼前。", icon: "✈" },
 ];
 
 const filters = ["全部", "倫敦", "比隆", "哥本哈根", "斯德哥爾摩", "移動日"] as const;
@@ -53,7 +54,7 @@ export default function Home() {
           <div className="hero-copy">
             <p className="eyebrow">A FAMILY JOURNEY · SUMMER 2025</p>
             <h1>從倫敦，<br />一路向<span>北。</span></h1>
-            <p className="lede">18 天穿過 3 個國家，把魔法、積木、童話與島嶼，收進一家四口的夏日記憶。</p>
+            <p className="lede">18 天走訪英國、丹麥與瑞典，把博物館、學院、積木、港灣與老城，收進一家四口的夏日記憶。</p>
             <div className="hero-actions"><a className="pill" href="#days">查看完整行程 <span>↓</span></a><p>12 JUL — 29 JUL<br /><b>TAIPEI · LONDON · BILLUND · COPENHAGEN · STOCKHOLM</b></p></div>
           </div>
           <div className="postcard" aria-label="旅程路線插畫">
@@ -66,16 +67,16 @@ export default function Home() {
             <p className="stamp">18 DAYS<br />3 COUNTRIES<br />1 FAMILY</p>
           </div>
         </div>
-        <div className="ticker"><div>THE LION KING ✦ LEGO HOUSE ✦ NYHAVN ✦ SKANSEN ✦ SUMMER IN THE NORTH ✦ THE LION KING ✦ LEGO HOUSE ✦ NYHAVN ✦ SKANSEN ✦</div></div>
+        <div className="ticker"><div>BRITISH MUSEUM ✦ OXFORD ✦ LEGO HOUSE ✦ NYHAVN ✦ SKANSEN ✦ SUMMER IN THE NORTH ✦ BRITISH MUSEUM ✦ OXFORD ✦ LEGO HOUSE ✦ NYHAVN ✦</div></div>
       </header>
 
       <section className="route-section wrap" id="route">
-        <div className="section-heading"><p className="eyebrow">THE ROUTE</p><h2>一趟旅行，<br />四座城市。</h2><p>從倫敦的舞台與博物館，走進丹麥的積木世界，再讓斯德哥爾摩的島嶼與童話為旅程收尾。</p></div>
+        <div className="section-heading"><p className="eyebrow">THE ROUTE</p><h2>一趟旅行，<br />四座城市。</h2><p>從倫敦的博物館與 Oxford 學院，走進丹麥的積木世界，再讓斯德哥爾摩的老城與露天博物館為旅程收尾。</p></div>
         <div className="route-map">
           <div className="route-track"></div>
           {[{n:"01",c:"倫敦",d:"07.13—07.18",x:"12%"},{n:"02",c:"比隆",d:"07.18—07.20",x:"38%"},{n:"03",c:"哥本哈根",d:"07.20—07.25",x:"64%"},{n:"04",c:"斯德哥爾摩",d:"07.25—07.28",x:"90%"}].map((item) => <div className="route-stop" style={{left:item.x}} key={item.n}><i></i><b>{item.n}</b><strong>{item.c}</strong><span>{item.d}</span></div>)}
         </div>
-        <div className="stats"><div><b>18</b><span>旅程天數</span></div><div><b>04</b><span>城市停留</span></div><div><b>03</b><span>國家穿越</span></div><div><b>∞</b><span>家庭回憶</span></div></div>
+        <div className="stats"><div><b>18</b><span>旅程天數</span></div><div><b>04</b><span>城市停留</span></div><div><b>03</b><span>旅行國家</span></div><div><b>∞</b><span>家庭回憶</span></div></div>
       </section>
 
       <section className="days" id="days">
@@ -102,14 +103,14 @@ export default function Home() {
       <section className="notes wrap" id="notes">
         <div className="note-title"><p className="eyebrow">FIELD NOTES</p><h2>帶孩子旅行，<br />節奏比清單重要。</h2></div>
         <div className="note-grid">
-          <article><span>01</span><h3>一日一個主角</h3><p>每天抓住一個核心景點，博物館、遊樂園與戶外散步彼此交錯，避免全家過度疲累。</p></article>
-          <article><span>02</span><h3>移動日要留白</h3><p>跨城市當天不硬塞景點；提早抵達、好好入住，才有體力享受下一站。</p></article>
-          <article><span>03</span><h3>北歐天氣會變</h3><p>薄外套、輕便雨具和孩子的點心隨身帶著，渡輪與海邊行程更自在。</p></article>
+          <article><span>01</span><h3>一日一個主角</h3><p>每天實際抓住一個核心景點，博物館、樂高與戶外散步彼此交錯，全家才有餘裕好好感受。</p></article>
+          <article><span>02</span><h3>移動日要留白</h3><p>跨城市當天保留空白，順利抵達、採買、入住與休息，本身就是完整的旅行日。</p></article>
+          <article><span>03</span><h3>北歐天氣會變</h3><p>薄外套和輕便雨具在哥本哈根派上用場；遇上雨，也不必取消整天的風景。</p></article>
         </div>
         <div className="quote"><span>“</span><p>我們不是趕完一張行程表，<br />而是在四座城市裡，<em>一起長出回憶。</em></p></div>
       </section>
 
-      <footer><div className="wrap"><div><p className="eyebrow">NORDIC SUMMER · 2025</p><h2>See you<br />up north.</h2></div><div className="footer-route"><span>台北</span><i>→</i><span>倫敦</span><i>→</i><span>比隆</span><i>→</i><span>哥本哈根</span><i>→</i><span>斯德哥爾摩</span></div><a className="to-top" href="#top" aria-label="回到頂端">↑</a></div></footer>
+      <footer><div className="wrap"><div><p className="eyebrow">NORDIC SUMMER · 2025</p><h2>See you<br />up north.</h2></div><div className="footer-route"><span>台北</span><i>→</i><span>曼谷</span><i>→</i><span>倫敦</span><i>→</i><span>比隆</span><i>→</i><span>哥本哈根</span><i>→</i><span>斯德哥爾摩</span><i>→</i><span>曼谷</span><i>→</i><span>台北</span></div><a className="to-top" href="#top" aria-label="回到頂端">↑</a></div></footer>
     </main>
   );
 }

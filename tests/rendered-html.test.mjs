@@ -23,5 +23,11 @@ test("server-renders the Nordic Summer itinerary", async () => {
   assert.match(html, /從倫敦/);
   assert.match(html, /每日行程/);
   assert.match(html, /斯德哥爾摩/);
+  assert.match(html, /大英博物館/);
+  assert.match(html, /Oxford 學院一日遊/);
+  assert.match(html, /Copenhagen Zoo/);
+  assert.match(html, /Gamla stan/);
+  assert.match(html, /曼谷 → 台北/);
+  assert.doesNotMatch(html, /Warner Bros|Tivoli Gardens|Junibacken|Fjäderholmarna/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/i);
 });
