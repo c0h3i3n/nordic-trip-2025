@@ -28,8 +28,12 @@ test("server-renders the Nordic Summer itinerary", async () => {
   assert.match(html, /Copenhagen Zoo/);
   assert.match(html, /Gamla stan/);
   assert.match(html, /曼谷 → 台北/);
+  assert.match(html, /THE DAY \/ 一天的腳步/);
+  assert.match(html, /TRAVEL MOMENT \/ 旅途片刻/);
+  assert.match(html, /清晨 07:15 飛抵 Heathrow/);
+  assert.match(html, /長途飛行後只留一座博物館當主角/);
   assert.match(html, /WHAT WE ATE \/ 這天吃什麼/);
-  assert.match(html, /這些餐桌筆記依照片與旅途回憶整理/);
+  assert.match(html, /每日旅行誌依照片與旅途資料整理/);
   assert.match(html, /在泰航上吃過機上早餐；抵達倫敦後簡單用餐/);
   assert.doesNotMatch(html, /照片沒有留下可確認|沒有留下清楚餐點照片/);
   assert.match(html, /aria-pressed="true"/);
@@ -39,6 +43,10 @@ test("server-renders the Nordic Summer itinerary", async () => {
   assert.equal(dailyPhotos.length, 18, "renders one representative photo for every itinerary day");
   assert.match(dailyPhotos[0], /loading="eager"/);
   for (const photo of dailyPhotos.slice(1)) assert.match(photo, /loading="lazy"/);
+
+  assert.equal(html.match(/class="journal-detail"/g)?.length, 18);
+  assert.equal(html.match(/class="journal-step"/g)?.length, 54);
+  assert.equal(html.match(/TRAVEL MOMENT \/ 旅途片刻/g)?.length, 18);
 
   assert.doesNotMatch(html, /Warner Bros|Tivoli Gardens|Junibacken|Fjäderholmarna/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/i);
