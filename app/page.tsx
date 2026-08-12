@@ -1,7 +1,9 @@
 "use client";
 /* eslint-disable @next/next/no-img-element */
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ReactNode } from "react";
+
+type IconType = "flight" | "museum" | "landmark" | "theme-park" | "water" | "park";
 
 type Stop = {
   date: string;
@@ -11,8 +13,32 @@ type Stop = {
   stay?: string;
   move?: string;
   note?: string;
-  icon: string;
+  icon: IconType;
 };
+
+const ICON_PROPS = {
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 1.8,
+  strokeLinecap: "round" as const,
+  strokeLinejoin: "round" as const,
+  "aria-hidden": true,
+  focusable: false,
+};
+
+const ICONS: Record<IconType, ReactNode> = {
+  flight: <svg {...ICON_PROPS}><path d="M3 11l17-7-7 17-2-7-8-3z" /><path d="M13 14l4-4" /></svg>,
+  museum: <svg {...ICON_PROPS}><path d="M12 3l9 6H3l9-6z" /><path d="M4 21h16" /><path d="M4 10h16" /><path d="M7.5 10v11M12 10v11M16.5 10v11" /></svg>,
+  landmark: <svg {...ICON_PROPS}><path d="M9 3h6l3 6H6l3-6z" /><path d="M8 21h8" /><path d="M10 9v12M14 9v12" /></svg>,
+  "theme-park": <svg {...ICON_PROPS}><circle cx="12" cy="12" r="7" /><path d="M12 5v14M5 12h14M7.5 7.5l9 9M16.5 7.5l-9 9" /></svg>,
+  water: <svg {...ICON_PROPS}><path d="M2 8c2-2 4-2 6 0s4 2 6 0 4-2 6 0" /><path d="M2 14c2-2 4-2 6 0s4 2 6 0 4-2 6 0" /><path d="M2 20c2-2 4-2 6 0s4 2 6 0 4-2 6 0" /></svg>,
+  park: <svg {...ICON_PROPS}><path d="M12 22V12" /><path d="M12 12C7 12 4 9 4 4c5 0 8 3 8 8z" /><path d="M12 12c5 0 8-3 8-8-5 0-8 3-8 8z" /></svg>,
+};
+
+function DayIcon({ type }: { type: IconType }) {
+  return ICONS[type];
+}
 
 type DayMedia = {
   photo: string;
@@ -22,45 +48,45 @@ type DayMedia = {
 };
 
 const stops: Stop[] = [
-  { date: "7.12", city: "移動日", title: "台北 → 曼谷", detail: "從桃園出發，搭乘泰航抵達曼谷蘇凡納布機場，再轉機續飛倫敦。", stay: "機上／曼谷轉機", move: "TPE · BKK", note: "文件、藥品與過夜用品都放在手提行李。", icon: "✈" },
-  { date: "7.13", city: "倫敦", title: "曼谷 → 倫敦・大英博物館", detail: "07:15 飛抵 Heathrow；進城後走進 British Museum 的 Great Court 與展廳。", stay: "Premier Inn London City（Old Street）", move: "飛機＋大眾運輸＋步行", note: "長途飛行後只安排一個主角，慢慢調整時差。", icon: "◉" },
-  { date: "7.14", city: "倫敦", title: "西敏與皇家馬廄", detail: "從 Big Ben、國會大廈一路走到 Royal Mews，再穿過 St James’s Park。", stay: "Premier Inn London City（Old Street）", move: "地鐵＋步行", note: "第一個完整倫敦日，就從最經典的城市風景開始。", icon: "✦" },
-  { date: "7.15", city: "倫敦", title: "敞篷巴士看倫敦", detail: "搭乘 open-top sightseeing bus 穿過市中心；這天也換住 Earl’s Court。", stay: "Premier Inn Kensington（Earl’s Court）", move: "觀光巴士＋地鐵", note: "坐著看城市，也替接下來的博物館日保留體力。", icon: "◆" },
-  { date: "7.16", city: "倫敦", title: "科學與自然史", detail: "在 Science Museum 動手探索，再到 Natural History Museum 與花園看自然萬象。", stay: "Premier Inn Kensington（Earl’s Court）", move: "步行", note: "兩座博物館就在隔壁，中間隨時可以停下來休息。", icon: "⌁" },
-  { date: "7.17", city: "倫敦", title: "Oxford 學院一日遊", detail: "從倫敦當日往返，走訪 Christ Church、Tom Quad、Great Hall 與學院迴廊。", stay: "Premier Inn Kensington（Earl’s Court）", move: "火車＋步行", note: "大學城石板路走得多，點心與輕便雨具都很有用。", icon: "☼" },
-  { date: "7.18", city: "移動日", title: "倫敦 → 比隆", detail: "15:35 從 Gatwick 起飛，17:10 抵達 Billund；入住木屋後採買、煮晚餐。", stay: "LEGOLAND Holiday Village", move: "火車＋飛機＋計程車", note: "抵達後沒有再排景點，木屋裡的第一頓晚餐就是旅行風景。", icon: "✈" },
-  { date: "7.19", city: "比隆", title: "LEGOLAND 一整天", detail: "10:00 入園，從 Miniland 一路玩到各式遊樂設施，傍晚再回木屋吃飯。", stay: "LEGOLAND Holiday Village", move: "步行約 5 分鐘", note: "把一整天完整留給孩子最期待的樂高主場。", icon: "▦" },
-  { date: "7.20", city: "移動日", title: "LEGO House → 哥本哈根", detail: "上午探索 LEGO House 與 Tree of Creativity，午後橫越丹麥前往哥本哈根。", stay: "ibis Styles Copenhagen Ørestad", move: "公車＋火車＋步行", note: "玩完再移動，抵達新城市後只辦入住、好好休息。", icon: "▤" },
-  { date: "7.21", city: "哥本哈根", title: "小美人魚與彩色港灣", detail: "沿海走到 Little Mermaid，再穿過城市水岸，在 Nyhavn 看彩色屋與運河。", stay: "ibis Styles Copenhagen Ørestad", move: "地鐵＋公車＋步行", note: "下雨的港灣有另一種顏色，雨衣比撐傘更方便。", icon: "✺" },
-  { date: "7.22", city: "哥本哈根", title: "雨中的 Copenhagen Zoo", detail: "前往 Frederiksberg 的 Copenhagen Zoo，在雨裡慢慢看動物與園區風景。", stay: "ibis Styles Copenhagen Ørestad", move: "地鐵＋公車＋步行", note: "雨具、替換衣物和幾段室內休息，讓全家繼續玩得自在。", icon: "◎" },
-  { date: "7.23", city: "哥本哈根", title: "科學體驗與 LEGO 補給", detail: "在互動科學館玩工程、光學與泡泡展項，再回到市中心逛 LEGO Store。", stay: "ibis Styles Copenhagen Ørestad", move: "地鐵＋步行", note: "讓孩子自己動手的展館，常常比趕下一個景點更值得。", icon: "≈" },
-  { date: "7.24", city: "哥本哈根", title: "轉住 Kastrup・海濱慢行", detail: "換住機場附近的 Kastrup；在碼頭、海濱與街區散步，也留時間採買和休息。", stay: "Scandic CPH Strandpark", move: "地鐵＋火車＋步行", note: "旅程中段刻意放慢，整理行李也整理這幾天的回憶。", icon: "◇" },
-  { date: "7.25", city: "移動日", title: "哥本哈根 → 斯德哥爾摩", detail: "白天留在 Kastrup 海邊；20:20 起飛，21:30 抵達 Stockholm 後進城入住。", stay: "Scandic Wallin", move: "步行＋地鐵＋飛機＋機場鐵路", note: "晚班機抵達後沒有再排活動，順利到飯店就是今天的終點。", icon: "✈" },
-  { date: "7.26", city: "斯德哥爾摩", title: "老城石板路漫遊", detail: "走過 Gamla stan 與 Riddarholmen 的石板路，再回 Norrmalm 逛街、喝咖啡、看水岸。", stay: "Scandic Wallin", move: "地鐵＋步行", note: "老城最適合慢慢走，也要替孩子安排隨時停下來的空間。", icon: "♢" },
-  { date: "7.27", city: "斯德哥爾摩", title: "Skansen 一整天", detail: "走進露天博物館，看歷史建築、花園與北歐動物，把最後一個完整日留給 Skansen。", stay: "Scandic Wallin", move: "電車＋步行", note: "園區很大，好走的鞋派上用場，大家照自己的速度慢慢逛。", icon: "⚑" },
-  { date: "7.28", city: "移動日", title: "斯德哥爾摩 → 曼谷", detail: "退房後搭機場鐵路到 Arlanda、完成退稅；13:50 搭乘泰航飛往曼谷。", stay: "機上", move: "Arlanda Express＋飛機", note: "護照、退稅文件與重要物品全部隨身攜帶。", icon: "✈" },
-  { date: "7.29", city: "移動日", title: "曼谷 → 台北", detail: "在曼谷轉機後續飛台北，13:05 抵達桃園；領回行李，也把 18 天帶回家。", stay: "回到家", move: "BKK · TPE", note: "旅程在行李轉盤旁收尾，照片則把每一天重新帶回眼前。", icon: "✈" },
+  { date: "7.12", city: "移動日", title: "台北 → 曼谷", detail: "從桃園出發，搭乘泰航抵達曼谷蘇凡納布機場，再轉機續飛倫敦。", stay: "機上／曼谷轉機", move: "TPE · BKK", note: "文件、藥品與過夜用品都放在手提行李。", icon: "flight" },
+  { date: "7.13", city: "倫敦", title: "曼谷 → 倫敦・大英博物館", detail: "07:15 飛抵 Heathrow；進城後走進 British Museum 的 Great Court 與展廳。", stay: "Premier Inn London City（Old Street）", move: "飛機＋大眾運輸＋步行", note: "長途飛行後只安排一個主角，慢慢調整時差。", icon: "museum" },
+  { date: "7.14", city: "倫敦", title: "西敏與皇家馬廄", detail: "從 Big Ben、國會大廈一路走到 Royal Mews，再穿過 St James’s Park。", stay: "Premier Inn London City（Old Street）", move: "地鐵＋步行", note: "第一個完整倫敦日，就從最經典的城市風景開始。", icon: "landmark" },
+  { date: "7.15", city: "倫敦", title: "敞篷巴士看倫敦", detail: "搭乘 open-top sightseeing bus 穿過市中心；這天也換住 Earl’s Court。", stay: "Premier Inn Kensington（Earl’s Court）", move: "觀光巴士＋地鐵", note: "坐著看城市，也替接下來的博物館日保留體力。", icon: "landmark" },
+  { date: "7.16", city: "倫敦", title: "科學與自然史", detail: "在 Science Museum 動手探索，再到 Natural History Museum 與花園看自然萬象。", stay: "Premier Inn Kensington（Earl’s Court）", move: "步行", note: "兩座博物館就在隔壁，中間隨時可以停下來休息。", icon: "museum" },
+  { date: "7.17", city: "倫敦", title: "Oxford 學院一日遊", detail: "從倫敦當日往返，走訪 Christ Church、Tom Quad、Great Hall 與學院迴廊。", stay: "Premier Inn Kensington（Earl’s Court）", move: "火車＋步行", note: "大學城石板路走得多，點心與輕便雨具都很有用。", icon: "landmark" },
+  { date: "7.18", city: "移動日", title: "倫敦 → 比隆", detail: "15:35 從 Gatwick 起飛，17:10 抵達 Billund；入住木屋後採買、煮晚餐。", stay: "LEGOLAND Holiday Village", move: "火車＋飛機＋計程車", note: "抵達後沒有再排景點，木屋裡的第一頓晚餐就是旅行風景。", icon: "flight" },
+  { date: "7.19", city: "比隆", title: "LEGOLAND 一整天", detail: "10:00 入園，從 Miniland 一路玩到各式遊樂設施，傍晚再回木屋吃飯。", stay: "LEGOLAND Holiday Village", move: "步行約 5 分鐘", note: "把一整天完整留給孩子最期待的樂高主場。", icon: "theme-park" },
+  { date: "7.20", city: "移動日", title: "LEGO House → 哥本哈根", detail: "上午探索 LEGO House 與 Tree of Creativity，午後橫越丹麥前往哥本哈根。", stay: "ibis Styles Copenhagen Ørestad", move: "公車＋火車＋步行", note: "玩完再移動，抵達新城市後只辦入住、好好休息。", icon: "flight" },
+  { date: "7.21", city: "哥本哈根", title: "小美人魚與彩色港灣", detail: "沿海走到 Little Mermaid，再穿過城市水岸，在 Nyhavn 看彩色屋與運河。", stay: "ibis Styles Copenhagen Ørestad", move: "地鐵＋公車＋步行", note: "下雨的港灣有另一種顏色，雨衣比撐傘更方便。", icon: "water" },
+  { date: "7.22", city: "哥本哈根", title: "雨中的 Copenhagen Zoo", detail: "前往 Frederiksberg 的 Copenhagen Zoo，在雨裡慢慢看動物與園區風景。", stay: "ibis Styles Copenhagen Ørestad", move: "地鐵＋公車＋步行", note: "雨具、替換衣物和幾段室內休息，讓全家繼續玩得自在。", icon: "park" },
+  { date: "7.23", city: "哥本哈根", title: "科學體驗與 LEGO 補給", detail: "在互動科學館玩工程、光學與泡泡展項，再回到市中心逛 LEGO Store。", stay: "ibis Styles Copenhagen Ørestad", move: "地鐵＋步行", note: "讓孩子自己動手的展館，常常比趕下一個景點更值得。", icon: "museum" },
+  { date: "7.24", city: "哥本哈根", title: "轉住 Kastrup・海濱慢行", detail: "換住機場附近的 Kastrup；在碼頭、海濱與街區散步，也留時間採買和休息。", stay: "Scandic CPH Strandpark", move: "地鐵＋火車＋步行", note: "旅程中段刻意放慢，整理行李也整理這幾天的回憶。", icon: "water" },
+  { date: "7.25", city: "移動日", title: "哥本哈根 → 斯德哥爾摩", detail: "白天留在 Kastrup 海邊；20:20 起飛，21:30 抵達 Stockholm 後進城入住。", stay: "Scandic Wallin", move: "步行＋地鐵＋飛機＋機場鐵路", note: "晚班機抵達後沒有再排活動，順利到飯店就是今天的終點。", icon: "flight" },
+  { date: "7.26", city: "斯德哥爾摩", title: "老城石板路漫遊", detail: "走過 Gamla stan 與 Riddarholmen 的石板路，再回 Norrmalm 逛街、喝咖啡、看水岸。", stay: "Scandic Wallin", move: "地鐵＋步行", note: "老城最適合慢慢走，也要替孩子安排隨時停下來的空間。", icon: "landmark" },
+  { date: "7.27", city: "斯德哥爾摩", title: "Skansen 一整天", detail: "走進露天博物館，看歷史建築、花園與北歐動物，把最後一個完整日留給 Skansen。", stay: "Scandic Wallin", move: "電車＋步行", note: "園區很大，好走的鞋派上用場，大家照自己的速度慢慢逛。", icon: "park" },
+  { date: "7.28", city: "移動日", title: "斯德哥爾摩 → 曼谷", detail: "退房後搭機場鐵路到 Arlanda、完成退稅；13:50 搭乘泰航飛往曼谷。", stay: "機上", move: "Arlanda Express＋飛機", note: "護照、退稅文件與重要物品全部隨身攜帶。", icon: "flight" },
+  { date: "7.29", city: "移動日", title: "曼谷 → 台北", detail: "在曼谷轉機後續飛台北，13:05 抵達桃園；領回行李，也把 18 天帶回家。", stay: "回到家", move: "BKK · TPE", note: "旅程在行李轉盤旁收尾，照片則把每一天重新帶回眼前。", icon: "flight" },
 ];
 
 const dayMedia: DayMedia[] = [
-  { photo: "journey/day-01-departure.jpg", alt: "機場航廈裡準備出發的旅行風景", food: "泰航機上餐；曼谷轉機時補充飲料與點心。" },
-  { photo: "journey/day-02-british-museum.jpg", alt: "倫敦大英博物館外觀", food: "長途航班機上早餐；抵達倫敦後簡單用餐，照片沒有留下可確認的店名。" },
-  { photo: "journey/day-03-royal-mews.jpg", alt: "皇家馬廄裡的典藏展示", food: "倫敦市區用餐；照片沒有留下可確認的店名與品項。" },
-  { photo: "journey/day-04-london-bus.jpg", alt: "紅色敞篷觀光巴士穿過倫敦街景", food: "在 Five Guys 用餐。" },
-  { photo: "journey/day-05-science-museum.jpg", alt: "科學博物館裡色彩鮮明的實驗展示", food: "博物館日簡單用餐；照片沒有留下可確認的品項。" },
-  { photo: "journey/day-06-oxford.jpg", alt: "Oxford 學院裡覆滿綠意的石造迴廊", food: "Oxford 市區用餐與途中點心；照片沒有留下可確認的店名。" },
-  { photo: "journey/day-07-billund-cabin.jpg", alt: "比隆假日村裡的紅色木屋", food: "機場點心；抵達木屋後自煮義大利麵與煎肉丁。" },
-  { photo: "journey/day-08-legoland.jpg", alt: "LEGOLAND 園區裡的積木海盜船水景", food: "LEGOLAND 園區內簡單用餐；晚餐回木屋解決。" },
-  { photo: "journey/day-09-lego-house.jpg", alt: "LEGO House 裡的樂高歷史展示", food: "LEGO House 與移動途中簡單吃；沒有留下可確認的店名或品項。" },
-  { photo: "journey/day-10-nyhavn.jpg", alt: "Nyhavn 運河旁的一排彩色房屋", food: "超市採買飲料、牛奶、米與零食，回飯店簡單吃。" },
-  { photo: "journey/day-11-copenhagen-zoo.jpg", alt: "Copenhagen Zoo 園區裡的動物棲地", food: "動物園內簡單用餐；沒有留下清楚餐點照片。" },
-  { photo: "journey/day-12-copenhagen-city.jpg", alt: "哥本哈根市中心的廣場與街景", food: "互動科學館與市中心途中用餐；沒有留下可確認的品項。" },
-  { photo: "journey/day-13-kastrup.jpg", alt: "Kastrup 海濱碼頭與飯店風景", food: "Kastrup 街區採買與簡單外食；照片沒有留下可確認的店名。" },
-  { photo: "journey/day-14-stockholm-metro.jpg", alt: "前往斯德哥爾摩途中所見的城市交通風景", food: "白天在 Kastrup 簡單用餐；晚班機前後以機場餐食為主。" },
-  { photo: "journey/day-15-gamla-stan.jpg", alt: "Gamla stan 老城的石板街道與建築", food: "Gamla stan 散步途中用餐；照片沒有留下可確認的店名與品項。" },
-  { photo: "journey/day-16-skansen.jpg", alt: "Skansen 園區裡的北歐歷史建築與綠地", food: "Skansen 園區內簡單用餐；品項沒有拍清楚。" },
-  { photo: "journey/day-17-arlanda.jpg", alt: "Arlanda 機場裡準備返程的航班風景", food: "Arlanda 機場餐食與泰航機上餐。" },
-  { photo: "journey/day-18-homecoming.jpg", alt: "返抵桃園機場時的行李轉盤", food: "曼谷轉機點心與返台航段機上餐。" },
+  { photo: "journey/day-01-departure.jpg", alt: "機場航廈裡準備出發的旅行風景", food: "旅程從泰航機上餐開始；在曼谷轉機時，再用飲料與點心接力。" },
+  { photo: "journey/day-02-british-museum.jpg", alt: "倫敦大英博物館外觀", food: "在泰航上吃過機上早餐；抵達倫敦後簡單用餐，第一天沒有特別記下店名。" },
+  { photo: "journey/day-03-royal-mews.jpg", alt: "皇家馬廄裡的典藏展示", food: "逛倫敦的空檔，在市區簡單吃了一餐；那天忙著看風景，沒有特別記下店名與菜色。" },
+  { photo: "journey/day-04-london-bus.jpg", alt: "紅色敞篷觀光巴士穿過倫敦街景", food: "搭著紅色巴士逛倫敦，也在 Five Guys 坐下來吃了一餐。" },
+  { photo: "journey/day-05-science-museum.jpg", alt: "科學博物館裡色彩鮮明的實驗展示", food: "博物館之間簡單吃了一餐；那天鏡頭忙著記下展品，餐點便沒有留下特寫。" },
+  { photo: "journey/day-06-oxford.jpg", alt: "Oxford 學院裡覆滿綠意的石造迴廊", food: "在 Oxford 市區用餐，路上也吃了些點心；店名沒有特別記下來。" },
+  { photo: "journey/day-07-billund-cabin.jpg", alt: "比隆假日村裡的紅色木屋", food: "搭機前先吃了點心；到了比隆木屋，晚餐是自己煮的義大利麵與煎肉丁。" },
+  { photo: "journey/day-08-legoland.jpg", alt: "LEGOLAND 園區裡的積木海盜船水景", food: "白天在 LEGOLAND 園區簡單用餐，晚餐則回到木屋解決。" },
+  { photo: "journey/day-09-lego-house.jpg", alt: "LEGO House 裡的樂高歷史展示", food: "在 LEGO House 與移動途中簡單吃；這天的店名與餐點沒有被鏡頭記住。" },
+  { photo: "journey/day-10-nyhavn.jpg", alt: "Nyhavn 運河旁的一排彩色房屋", food: "逛超市買了飲料、牛奶、米與零食，回飯店簡單吃上一餐。" },
+  { photo: "journey/day-11-copenhagen-zoo.jpg", alt: "Copenhagen Zoo 園區裡的動物棲地", food: "在動物園裡簡單吃了一餐；雨天的園區被好好記下，餐點則沒有留下特寫。" },
+  { photo: "journey/day-12-copenhagen-city.jpg", alt: "哥本哈根市中心的廣場與街景", food: "在互動科學館和哥本哈根市中心之間順路用餐；這一餐沒有特別入鏡。" },
+  { photo: "journey/day-13-kastrup.jpg", alt: "Kastrup 海濱碼頭與飯店風景", food: "在 Kastrup 街區採買、簡單外食；店名沒記下，倒是海濱的慢步調留了下來。" },
+  { photo: "journey/day-14-stockholm-metro.jpg", alt: "前往斯德哥爾摩途中所見的城市交通風景", food: "白天在 Kastrup 簡單用餐；傍晚搭機前後，則以機場裡的餐食為主。" },
+  { photo: "journey/day-15-gamla-stan.jpg", alt: "Gamla stan 老城的石板街道與建築", food: "漫步 Gamla stan 時順路用餐；那天把注意力都留給老城，沒有特別記下店名與菜色。" },
+  { photo: "journey/day-16-skansen.jpg", alt: "Skansen 園區裡的北歐歷史建築與綠地", food: "在 Skansen 園區裡簡單用餐；鏡頭都留給老房子與綠地，餐點沒有留下特寫。" },
+  { photo: "journey/day-17-arlanda.jpg", alt: "Arlanda 機場裡準備返程的航班風景", food: "在 Arlanda 機場用餐，登機後接著吃泰航機上餐。" },
+  { photo: "journey/day-18-homecoming.jpg", alt: "返抵桃園機場時的行李轉盤", food: "曼谷轉機時吃了點心，返台航段再以泰航機上餐為旅程收尾。" },
 ];
 
 const filters = ["全部", "倫敦", "比隆", "哥本哈根", "斯德哥爾摩", "移動日"] as const;
@@ -102,8 +128,10 @@ export default function Home() {
       <section className="route-section wrap" id="route">
         <div className="section-heading"><p className="eyebrow">THE ROUTE</p><h2>一趟旅行，<br />四座城市。</h2><p>從倫敦的博物館與 Oxford 學院，走進丹麥的積木世界，再讓斯德哥爾摩的老城與露天博物館為旅程收尾。</p></div>
         <div className="route-map">
-          <div className="route-track"></div>
-          {[{n:"01",c:"倫敦",d:"07.13—07.18",x:"12%"},{n:"02",c:"比隆",d:"07.18—07.20",x:"38%"},{n:"03",c:"哥本哈根",d:"07.20—07.25",x:"64%"},{n:"04",c:"斯德哥爾摩",d:"07.25—07.28",x:"90%"}].map((item) => <div className="route-stop" style={{left:item.x}} key={item.n}><i></i><b>{item.n}</b><strong>{item.c}</strong><span>{item.d}</span></div>)}
+          <div className="route-map-inner">
+            <div className="route-track"></div>
+            {[{n:"01",c:"倫敦",d:"07.13—07.18",x:"12%"},{n:"02",c:"比隆",d:"07.18—07.20",x:"38%"},{n:"03",c:"哥本哈根",d:"07.20—07.25",x:"64%"},{n:"04",c:"斯德哥爾摩",d:"07.25—07.28",x:"90%"}].map((item) => <div className="route-stop" style={{left:item.x}} key={item.n}><i></i><b>{item.n}</b><strong>{item.c}</strong><span>{item.d}</span></div>)}
+          </div>
         </div>
         <div className="stats"><div><b>18</b><span>旅程天數</span></div><div><b>04</b><span>城市停留</span></div><div><b>03</b><span>旅行國家</span></div><div><b>∞</b><span>家庭回憶</span></div></div>
       </section>
@@ -111,19 +139,19 @@ export default function Home() {
       <section className="days" id="days">
         <div className="wrap">
           <div className="days-head"><div><p className="eyebrow">DAY BY DAY</p><h2>每日行程</h2></div><p>點開每一天，查看住宿、交通、親子提醒與餐食紀錄。</p></div>
-          <p className="food-source-note"><span>ABOUT THE MEALS</span>餐食只整理到照片與移動情境能支持的程度；沒有拍清楚的店名和品項不臆測。</p>
+          <p className="food-source-note"><span>ABOUT THE MEALS</span>這些餐桌筆記依照片與旅途回憶整理；能確認的才寫下店名與菜色，沒有被鏡頭記住的，就留作那天一頓簡單的日常。</p>
           <div className="filters" role="group" aria-label="依城市篩選">
-            {filters.map((item) => <button key={item} className={filter === item ? "active" : ""} onClick={() => { setFilter(item); setOpen(null); }}>{item}</button>)}
+            {filters.map((item) => <button key={item} className={filter === item ? "active" : ""} aria-pressed={filter === item} onClick={() => { setFilter(item); setOpen(null); }}>{item}</button>)}
           </div>
           <div className="timeline">
-            {visible.map((stop) => { const index = stops.indexOf(stop); const media = dayMedia[index]; const expanded = open === index; return (
+            {visible.map((stop) => { const index = stops.indexOf(stop); const media = dayMedia[index]; const expanded = open === index; const detailId = `day-${index + 1}-details`; return (
               <article className={`day-card ${expanded ? "expanded" : ""}`} key={`${stop.date}-${stop.title}`}>
-                <button className="day-summary" onClick={() => setOpen(expanded ? null : index)} aria-expanded={expanded}>
-                  <span className="date">{stop.date}</span><span className="day-icon">{stop.icon}</span><span className="day-title"><small>{stop.city}</small><strong>{stop.title}</strong><em>{stop.detail}</em></span>
+                <button className="day-summary" onClick={() => setOpen(expanded ? null : index)} aria-expanded={expanded} aria-controls={detailId} aria-label={`${stop.date} ${stop.title}，${expanded ? "收合" : "展開"}詳細內容`}>
+                  <span className="date">{stop.date}</span><span className="day-icon"><DayIcon type={stop.icon} /></span><span className="day-title"><small>{stop.city}</small><strong>{stop.title}</strong><em>{stop.detail}</em></span>
                   <span className="day-photo"><img src={media.photo} alt={media.alt} width="720" height="480" loading={index === 0 ? "eager" : "lazy"} fetchPriority={index === 0 ? "high" : undefined} decoding="async" style={media.position ? { objectPosition: media.position } : undefined} /></span>
-                  <span className="plus">{expanded ? "−" : "+"}</span>
+                  <span className="plus" aria-hidden="true">{expanded ? "−" : "+"}</span>
                 </button>
-                {expanded && <div className="day-detail">
+                {expanded && <div className="day-detail" id={detailId}>
                   <div><small>STAY</small><p>{stop.stay ?? "—"}</p></div><div><small>GETTING AROUND</small><p>{stop.move ?? "—"}</p></div><div><small>FAMILY NOTE</small><p>{stop.note ?? "—"}</p></div>
                   <div className="meal-detail"><small>WHAT WE ATE / 這天吃什麼</small><p>{media.food}</p></div>
                 </div>}

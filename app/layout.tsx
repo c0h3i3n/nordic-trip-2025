@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
+import localFont from "next/font/local";
 import "./globals.css";
+
+const display = localFont({
+  src: "./fonts/bricolage-grotesque-800.ttf",
+  variable: "--font-display",
+  weight: "800",
+  display: "swap",
+});
 
 const isGitHubPages = process.env.GITHUB_ACTIONS === "true";
 const siteUrl = isGitHubPages
@@ -32,7 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-Hant">
-      <body>{children}</body>
+      <body className={display.variable}>{children}</body>
     </html>
   );
 }

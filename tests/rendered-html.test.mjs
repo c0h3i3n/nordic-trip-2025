@@ -29,8 +29,11 @@ test("server-renders the Nordic Summer itinerary", async () => {
   assert.match(html, /Gamla stan/);
   assert.match(html, /曼谷 → 台北/);
   assert.match(html, /WHAT WE ATE \/ 這天吃什麼/);
-  assert.match(html, /餐食只整理到照片與移動情境能支持的程度/);
-  assert.match(html, /長途航班機上早餐；抵達倫敦後簡單用餐/);
+  assert.match(html, /這些餐桌筆記依照片與旅途回憶整理/);
+  assert.match(html, /在泰航上吃過機上早餐；抵達倫敦後簡單用餐/);
+  assert.doesNotMatch(html, /照片沒有留下可確認|沒有留下清楚餐點照片/);
+  assert.match(html, /aria-pressed="true"/);
+  assert.match(html, /aria-controls="day-2-details"/);
 
   const dailyPhotos = html.match(/<img\b[^>]*src="journey\/day-\d{2}-[^"]+\.jpg"[^>]*>/g) ?? [];
   assert.equal(dailyPhotos.length, 18, "renders one representative photo for every itinerary day");
