@@ -1,31 +1,28 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const isGitHubPages = process.env.GITHUB_ACTIONS === "true";
+const siteUrl = isGitHubPages
+  ? "https://c0h3i3n.github.io/nordic-trip-2025/"
+  : "https://nordic-summer-2025-family.vfzdwcvj42.chatgpt.site/";
+const assetBase = isGitHubPages ? "/nordic-trip-2025" : "";
+const ogImageUrl = new URL("og.png", siteUrl).toString();
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://nordic-summer-2025.example.com"),
+  metadataBase: new URL(siteUrl),
   title: "Nordic Summer ’25｜一家四口的歐洲夏日旅行",
   description: "2025 年夏天，從倫敦、比隆、哥本哈根到斯德哥爾摩的 18 天家庭旅行紀錄。",
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
+    icon: `${assetBase}/favicon.svg`,
+    shortcut: `${assetBase}/favicon.svg`,
   },
   openGraph: {
     title: "Nordic Summer ’25",
     description: "18 DAYS · 3 COUNTRIES · 1 FAMILY",
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Nordic Summer 2025 family journey" }],
+    url: siteUrl,
+    images: [{ url: ogImageUrl, width: 1200, height: 630, alt: "Nordic Summer 2025 family journey" }],
   },
-  twitter: { card: "summary_large_image", images: ["/og.png"] },
+  twitter: { card: "summary_large_image", images: [ogImageUrl] },
 };
 
 export default function RootLayout({
@@ -35,11 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-Hant">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
