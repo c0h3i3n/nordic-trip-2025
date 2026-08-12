@@ -69,7 +69,9 @@ test("server-renders the Nordic Summer itinerary", async () => {
   assert.match(card("7.14"), /Five Guys/);
   assert.match(card("7.15"), /Platform 9¾/);
   assert.match(card("7.15"), /King’s Cross/);
-  assert.doesNotMatch(card("7.15"), /Five Guys/);
+  assert.match(card("7.15"), /再次到 Five Guys/);
+  assert.doesNotMatch(card("7.17"), /魚薯|漢堡配薯條/);
+  assert.match(card("7.18"), /魚薯、義大利麵和漢堡薯條/);
   assert.match(card("7.25"), /Den Blå Planet/);
   assert.match(card("7.25"), /丹麥國家水族館/);
   assert.match(card("7.29"), /沒有留下足以辨認品項的畫面/);
