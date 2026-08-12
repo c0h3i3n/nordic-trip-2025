@@ -47,6 +47,10 @@ test("server-renders the Nordic Summer itinerary", async () => {
   assert.equal(html.match(/class="journal-detail"/g)?.length, 18);
   assert.equal(html.match(/class="journal-step"/g)?.length, 54);
   assert.equal(html.match(/TRAVEL MOMENT \/ 旅途片刻/g)?.length, 18);
+  assert.match(html, /<strong>走進大英博物館<\/strong>/);
+  assert.match(html, /<strong>從車頂看倫敦<\/strong>/);
+  assert.match(html, /<strong>到花園走走<\/strong>/);
+  assert.doesNotMatch(html, /<strong>(上午|午後|傍晚)<\/strong>/);
 
   assert.doesNotMatch(html, /Warner Bros|Tivoli Gardens|Junibacken|Fjäderholmarna/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/i);

@@ -112,31 +112,31 @@ const dayJournal: DayJournal[] = [
     segments: [
       { label: "抵達", text: "清晨 07:15 飛抵 Heathrow，完成入境後，搭乘大眾運輸進入倫敦。" },
       { label: "進城", text: "帶著行李往 Old Street 一帶移動，第一天刻意把步調放慢，先讓全家適應時差。" },
-      { label: "午後", text: "走進 British Museum，從古典立面來到 Great Court，再慢慢探索館內展廳。" },
+      { label: "走進大英博物館", text: "走進 British Museum，從古典立面來到 Great Court，再慢慢探索館內展廳。" },
     ],
     moment: "長途飛行後只留一座博物館當主角，反而更能記住初見倫敦的心情。",
   },
   {
     segments: [
-      { label: "上午", text: "從 Big Ben 與國會大廈開始，以步行認識倫敦最經典的城市輪廓。" },
-      { label: "午後", text: "一路走到 Royal Mews，看看皇家馬廄與館內典藏，也遇見充滿英倫趣味的紀念小物。" },
-      { label: "傍晚", text: "穿過 St James’s Park，在城市地標與公園綠意之間，替第一個完整倫敦日收尾。" },
+      { label: "走到西敏", text: "從 Big Ben 與國會大廈開始，以步行認識倫敦最經典的城市輪廓。" },
+      { label: "探訪皇家馬廄", text: "一路走到 Royal Mews，看看皇家馬廄與館內典藏，也遇見充滿英倫趣味的紀念小物。" },
+      { label: "穿過 St James’s Park", text: "穿過 St James’s Park，在城市地標與公園綠意之間，替第一個完整倫敦日收尾。" },
     ],
     moment: "從鐘樓、皇家馬廄走進公園，同一天看見了倫敦莊重又輕鬆的兩種表情。",
   },
   {
     segments: [
-      { label: "上午", text: "搭上紅色敞篷觀光巴士，從較高的視角穿過倫敦市中心。" },
-      { label: "午後", text: "讓巴士代替雙腳串起沿途街景，一邊看新舊建築交錯，一邊替隔天的博物館行程保留體力。" },
-      { label: "傍晚", text: "轉往 Earl’s Court 入住新的飯店，並在 Five Guys 坐下來吃一頓簡單晚餐。" },
+      { label: "登上紅色巴士", text: "搭上紅色敞篷觀光巴士，從較高的視角穿過倫敦市中心。" },
+      { label: "從車頂看倫敦", text: "讓巴士代替雙腳串起沿途街景，一邊看新舊建築交錯，一邊替隔天的博物館行程保留體力。" },
+      { label: "轉住 Earl’s Court", text: "轉往 Earl’s Court 入住新的飯店，並在 Five Guys 坐下來吃一頓簡單晚餐。" },
     ],
     moment: "有些城市適合慢慢走，也有些風景，要坐上敞篷巴士才看得見。",
   },
   {
     segments: [
-      { label: "上午", text: "先到 Science Museum 動手探索，讓科學變成可以親自參與的遊戲。" },
-      { label: "午後", text: "接著走進相鄰的 Natural History Museum，在展品之間認識更廣闊的自然世界。" },
-      { label: "傍晚", text: "離開展館後到花園走走，讓一整天密集的新發現，在綠意中慢慢沉澱。" },
+      { label: "動手玩科學", text: "先到 Science Museum 動手探索，讓科學變成可以親自參與的遊戲。" },
+      { label: "走進自然史", text: "接著走進相鄰的 Natural History Museum，在展品之間認識更廣闊的自然世界。" },
+      { label: "到花園走走", text: "離開展館後到花園走走，讓一整天密集的新發現，在綠意中慢慢沉澱。" },
     ],
     moment: "兩座博物館就在彼此身旁，好奇心與休息時間也能自然地輪流出場。",
   },
