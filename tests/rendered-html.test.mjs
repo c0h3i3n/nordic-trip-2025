@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { existsSync } from "node:fs";
 import test from "node:test";
 
 async function render() {
@@ -50,6 +51,42 @@ test("server-renders the Nordic Summer itinerary", async () => {
   assert.match(dailyPhotos[0], /loading="eager"/);
   for (const photo of dailyPhotos.slice(1)) assert.match(photo, /loading="lazy"/);
 
+  const galleryPhotos = html.match(/<img\b[^>]*src="journey\/gallery\/[^"]+\.jpg"[^>]*>/g) ?? [];
+  assert.equal(galleryPhotos.length, 27, "renders all 27 gallery photos");
+  for (const photo of galleryPhotos) {
+    assert.match(photo, /loading="lazy"/, "gallery photos use lazy loading");
+    assert.match(photo, /decoding="async"/, "gallery photos decode asynchronously");
+
+    const alt = photo.match(/\balt="([^"]*)"/)?.[1] ?? "";
+    assert.ok(alt.trim(), "every gallery photo has non-empty alt text");
+
+    const src = photo.match(/\bsrc="([^"]+)"/)?.[1] ?? "";
+    assert.ok(src, "every gallery photo has a source");
+    assert.ok(
+      existsSync(new URL(`../public/${src}`, import.meta.url)),
+      `gallery photo exists on disk: ${src}`,
+    );
+  }
+
+  const gallerySections = (html.match(/<section\b[^>]*>/g) ?? [])
+    .filter((section) => /\bclass="[^"]*\bday-gallery\b[^"]*"/.test(section));
+  assert.equal(gallerySections.length, 18, "renders one gallery section for every itinerary day");
+
+  const galleryLabelIds = gallerySections.map((section) => {
+    const labelId = section.match(/\baria-labelledby="([^"]+)"/)?.[1] ?? "";
+    assert.ok(labelId, "every gallery section is labelled");
+    return labelId;
+  });
+  assert.equal(new Set(galleryLabelIds).size, 18, "gallery aria-labelledby values are unique");
+  for (const labelId of galleryLabelIds) {
+    const escapedLabelId = labelId.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    assert.equal(
+      html.match(new RegExp(`\\bid="${escapedLabelId}"`, "g"))?.length,
+      1,
+      `gallery label id is present exactly once: ${labelId}`,
+    );
+  }
+
   assert.equal(html.match(/class="journal-detail"/g)?.length, 18);
   assert.equal(html.match(/class="journal-step"/g)?.length, 54);
   assert.equal(html.match(/TRAVEL MOMENT \/ 旅途片刻/g)?.length, 18);
@@ -66,6 +103,7 @@ test("server-renders the Nordic Summer itinerary", async () => {
   assert.equal(cards.length, 18, "renders one itinerary card for every travel date");
   assert.match(card("7.12"), /泰航機上餐/);
   assert.match(card("7.13"), /羅塞塔石碑/);
+  assert.match(card("7.13"), /Great Court/);
   assert.match(card("7.14"), /Five Guys/);
   assert.match(card("7.15"), /Platform 9¾/);
   assert.match(card("7.15"), /King’s Cross/);
@@ -74,6 +112,8 @@ test("server-renders the Nordic Summer itinerary", async () => {
   assert.match(card("7.18"), /魚薯、義大利麵和漢堡薯條/);
   assert.match(card("7.25"), /Den Blå Planet/);
   assert.match(card("7.25"), /丹麥國家水族館/);
+  assert.match(card("7.25"), /飛往斯德哥爾摩/);
+  assert.match(card("7.26"), /Gamla stan/);
   assert.match(card("7.29"), /沒有留下足以辨認品項的畫面/);
 
   assert.doesNotMatch(html, /Warner Bros|Tivoli Gardens|Junibacken|Fjäderholmarna/);
