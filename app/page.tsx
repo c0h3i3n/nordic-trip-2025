@@ -271,21 +271,15 @@ export default function Home() {
         </nav>
 
         <div className="hero-grid wrap">
-          <div className="hero-copy">
-            <p className="eyebrow">A FAMILY JOURNEY · SUMMER 2025</p>
-            <h1>從倫敦，<br />一路向<span>北。</span></h1>
-            <p className="lede">18 天走訪英國、丹麥與瑞典，把博物館、學院、積木、港灣與老城，收進一家四口的夏日記憶。</p>
-            <div className="hero-actions"><a className="pill" href="#days">查看完整行程 <span>↓</span></a><p>12 JUL — 29 JUL<br /><b>TAIPEI · LONDON · BILLUND · COPENHAGEN · STOCKHOLM</b></p></div>
-          </div>
-          <div className="postcard" aria-label="旅程路線插畫">
-            <div className="sun"></div><div className="cloud c1"></div><div className="cloud c2"></div>
-            <div className="route-line"><span className="plane">✈</span></div>
-            <div className="city-mark london"><b>01</b><span>LONDON</span></div>
-            <div className="city-mark cph"><b>02</b><span>DENMARK</span></div>
-            <div className="city-mark stockholm"><b>03</b><span>STOCKHOLM</span></div>
-            <div className="waves">≈≈≈≈≈≈≈≈≈</div>
-            <p className="stamp">18 DAYS<br />3 COUNTRIES<br />1 FAMILY</p>
-          </div>
+          <h1 className="sr-only">Nordic Summer 2025：從倫敦，一路向北</h1>
+          <figure className="hero-cover">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="og.png" alt="Nordic Summer 旅程插畫：倫敦、丹麥積木世界、哥本哈根彩色港灣與斯德哥爾摩水岸" width="1731" height="909" fetchPriority="high" />
+            <figcaption>
+              <p>12 JUL — 29 JUL · TAIPEI · LONDON · BILLUND · COPENHAGEN · STOCKHOLM</p>
+              <a className="pill" href="#days">查看完整行程 <span>↓</span></a>
+            </figcaption>
+          </figure>
         </div>
         <div className="ticker"><div>BRITISH MUSEUM ✦ PLATFORM 9¾ ✦ OXFORD ✦ LEGO HOUSE ✦ DEN BLÅ PLANET ✦ NYHAVN ✦ SKANSEN ✦ SUMMER IN THE NORTH ✦</div></div>
       </header>

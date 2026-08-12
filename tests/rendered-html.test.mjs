@@ -27,6 +27,8 @@ test("server-renders the Nordic Summer itinerary", async () => {
 
   const html = await response.text();
   assert.match(html, /Nordic Summer/i);
+  assert.match(html, /<img\b[^>]*src="og\.png"[^>]*fetchPriority="high"/);
+  assert.match(html, /Nordic Summer 旅程插畫/);
   assert.match(html, /從倫敦/);
   assert.match(html, /每日行程/);
   assert.match(html, /斯德哥爾摩/);
