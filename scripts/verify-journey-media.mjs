@@ -20,20 +20,6 @@ const LOCKED_SCOPE = Object.freeze({ start: "2025-07-12", end: "2025-07-29" });
 // This list is intentionally code-reviewed and closed. Updating manifest hashes
 // cannot add a path, date, or category that is not explicitly approved here.
 const APPROVED_ASSETS = Object.freeze([
-  ["journey/day-02-british-museum.jpg", "2025-07-13", "architecture"],
-  ["journey/day-03-royal-mews.jpg", "2025-07-14", "travel-object"],
-  ["journey/day-05-science-museum.jpg", "2025-07-16", "attraction"],
-  ["journey/day-06-oxford.jpg", "2025-07-17", "architecture"],
-  ["journey/day-08-legoland.jpg", "2025-07-19", "travel-object"],
-  ["journey/day-09-lego-house.jpg", "2025-07-20", "travel-object"],
-  ["journey/day-11-copenhagen-zoo.jpg", "2025-07-22", "nature"],
-  ["journey/day-14-stockholm-metro.jpg", "2025-07-25", "environment"],
-  ["journey/day-15-gamla-stan.jpg", "2025-07-26", "street"],
-  ["journey/day-16-skansen.jpg", "2025-07-27", "architecture"],
-  ["journey/day-17-flight-home.jpg", "2025-07-28", "environment"],
-  ["journey/day-18-taipei-arrival.jpg", "2025-07-29", "environment"],
-  ["journey/gallery/day-06-gallery-02-divinity-school.jpg", "2025-07-17", "architecture"],
-  ["journey/gallery/day-14-gallery-01-aquarium-tank.jpg", "2025-07-25", "environment"],
 ].map(([path, date, category]) => Object.freeze({ path, date, category })));
 
 const ALLOWED_CATEGORIES = new Set([
@@ -76,7 +62,13 @@ function portablePath(path) {
 
 async function collectPublishedFiles(directory) {
   const files = [];
-  const rootStats = await lstat(directory);
+  let rootStats;
+  try {
+    rootStats = await lstat(directory);
+  } catch (error) {
+    if (error.code === "ENOENT" && APPROVED_ASSETS.length === 0) return files;
+    throw error;
+  }
   if (rootStats.isSymbolicLink() || !rootStats.isDirectory()) {
     fail("public/journey must be a real directory, not a symlink");
     return files;

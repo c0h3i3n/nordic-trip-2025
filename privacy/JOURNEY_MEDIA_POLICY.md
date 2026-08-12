@@ -66,6 +66,7 @@ Exclude a photo if it contains or may expose:
 
 ## Manual SAFE review and allowlist
 
+- Current publication status: **photos paused**. The publication allowlist is intentionally empty, so no journey photo may be included in a build.
 - Each candidate must pass a manual privacy review immediately before publication.
 - Only a file marked **SAFE** may be added to the explicit publication allowlist.
 - The allowlist must name each public output file individually and associate it only with an in-scope travel date. It must not authorize a directory, wildcard, date range expansion, or recursive scan.

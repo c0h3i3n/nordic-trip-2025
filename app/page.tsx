@@ -1,6 +1,4 @@
 "use client";
-/* eslint-disable @next/next/no-img-element */
-
 import { useMemo, useState, type ReactNode } from "react";
 
 type IconType = "flight" | "museum" | "landmark" | "theme-park" | "water" | "park";
@@ -40,16 +38,8 @@ function DayIcon({ type }: { type: IconType }) {
   return ICONS[type];
 }
 
-type DayPhoto = {
-  photo: string;
-  alt: string;
-  position?: string;
-};
-
 type DayMedia = {
-  cover: DayPhoto | null;
   food: string;
-  gallery: DayPhoto[];
 };
 
 type JournalSegment = {
@@ -84,28 +74,24 @@ const stops: Stop[] = [
 ];
 
 const dayMedia: DayMedia[] = [
-  { cover: null, food: "旅程從泰航機上餐開始；照片裡留下托盤熱食、麵包與飲料，菜名沒有特別記下。", gallery: [] },
-  { cover: { photo: "journey/day-02-british-museum.jpg", alt: "大英博物館 Great Court 的玻璃穹頂與石柱" }, food: "抵達日的餐食沒有留下足以確認店名或菜色的畫面；這一頁只記下照片能確認的部分。", gallery: [] },
-  { cover: { photo: "journey/day-03-royal-mews.jpg", alt: "皇家馬廄裡的典藏展示" }, food: "白天吃了一份沙拉；Five Guys 的漢堡與薯條，也留在這天的照片裡。", gallery: [] },
-  { cover: null, food: "這天再次到 Five Guys 吃漢堡與薯條；回到倫敦市區住宿後，也自煮義大利麵、綠色蔬菜與沙拉。", gallery: [] },
-  { cover: { photo: "journey/day-05-science-museum.jpg", alt: "科學博物館裡色彩鮮明的實驗展示" }, food: "白天在博物館咖啡館吃麵包或三明治類餐點，配沙拉、馬鈴薯與飲料；回到住宿後再吃米飯、肉類與蔬菜，另有藍莓和葡萄。", gallery: [] },
-  { cover: { photo: "journey/day-06-oxford.jpg", alt: "Oxford 學院裡覆滿綠意的石造迴廊" }, food: "Oxford 一日往返途中有簡單補給；照片沒有留下足以確認菜色或店名的完整餐桌畫面。", gallery: [
-    { photo: "journey/gallery/day-06-gallery-02-divinity-school.jpg", alt: "Bodleian Libraries 的 Divinity School 扇形拱頂" },
-  ] },
-  { cover: null, food: "照片裡有魚薯、義大利麵和漢堡薯條；搭機前後另有簡餐與機上麵包點心，抵達木屋後再自煮義大利麵、煎肉丁與生菜。", gallery: [] },
-  { cover: { photo: "journey/day-08-legoland.jpg", alt: "LEGOLAND 園區裡的大型積木人物" }, food: "先在木屋住宿區吃自助早餐，孩子也動手做鬆餅；白天在園區補充體力，傍晚再回木屋吃飯。", gallery: [] },
-  { cover: { photo: "journey/day-09-lego-house.jpg", alt: "LEGO House 裡的樂高歷史展示" }, food: "在 LEGO House 與移動途中簡單吃；照片沒有留下足以確認品項的餐點畫面。", gallery: [] },
-  { cover: null, food: "途中在咖啡館吃了麵包點心；回程再到超市買飲料、牛奶、米與零食，回住宿簡單用餐。", gallery: [] },
-  { cover: { photo: "journey/day-11-copenhagen-zoo.jpg", alt: "Copenhagen Zoo 園區裡的動物棲地" }, food: "園內午餐吃漢堡、薯條與米飯熱食；雨中休息時，也分食了一個大麵包點心。", gallery: [] },
-  { cover: null, food: "在 Experimentarium 吃自助式午餐，餐盤裡有主食、沙拉與水果；回到市中心後再吃冰品。", gallery: [] },
-  { cover: null, food: "把外帶餐盒帶回住宿：米飯、烤馬鈴薯、肉類與番茄小黃瓜沙拉；另外買了 Andersen Bakery 的麵包。", gallery: [] },
-  { cover: { photo: "journey/day-14-stockholm-metro.jpg", alt: "飛往斯德哥爾摩途中窗外的夕陽雲海" }, food: "早上吃住宿提供的自助早餐，有麵包、點心、熱食與水果；參觀水族館前後，也在海邊簡單吃了一餐。", gallery: [
-    { photo: "journey/gallery/day-14-gallery-01-aquarium-tank.jpg", alt: "Den Blå Planet 的大型水族箱與魚群" },
-  ] },
-  { cover: { photo: "journey/day-15-gamla-stan.jpg", alt: "Gamla stan 老城的石板街道與建築" }, food: "這天吃了煎餃與日式熱食；店名沒有留在照片裡。", gallery: [] },
-  { cover: { photo: "journey/day-16-skansen.jpg", alt: "Skansen 園區裡的北歐歷史建築與綠地" }, food: "在 Skansen 園內餐廳吃大盤熱食與配菜；確切菜名沒有留下，但這一餐替接下來的大園區補足了體力。", gallery: [] },
-  { cover: { photo: "journey/day-17-flight-home.jpg", alt: "從 Arlanda 起飛後窗外的機翼與雲層" }, food: "登機後吃泰航機上餐，照片留下托盤熱食；其餘餐點沒有足以確認內容的畫面。", gallery: [] },
-  { cover: { photo: "journey/day-18-taipei-arrival.jpg", alt: "返台航段窗外一路延伸的雲海" }, food: "這天的餐點沒有留下足以辨認品項的畫面；照片確認的是曼谷轉機、返台航段與桃園抵達。", gallery: [] },
+  { food: "旅程從泰航機上餐開始；照片裡留下托盤熱食、麵包與飲料，菜名沒有特別記下。" },
+  { food: "抵達日的餐食沒有留下足以確認店名或菜色的畫面；這一頁只記下照片能確認的部分。" },
+  { food: "白天吃了一份沙拉；Five Guys 的漢堡與薯條，也留在這天的照片裡。" },
+  { food: "這天再次到 Five Guys 吃漢堡與薯條；回到倫敦市區住宿後，也自煮義大利麵、綠色蔬菜與沙拉。" },
+  { food: "白天在博物館咖啡館吃麵包或三明治類餐點，配沙拉、馬鈴薯與飲料；回到住宿後再吃米飯、肉類與蔬菜，另有藍莓和葡萄。" },
+  { food: "Oxford 一日往返途中有簡單補給；照片沒有留下足以確認菜色或店名的完整餐桌畫面。" },
+  { food: "照片裡有魚薯、義大利麵和漢堡薯條；搭機前後另有簡餐與機上麵包點心，抵達木屋後再自煮義大利麵、煎肉丁與生菜。" },
+  { food: "先在木屋住宿區吃自助早餐，孩子也動手做鬆餅；白天在園區補充體力，傍晚再回木屋吃飯。" },
+  { food: "在 LEGO House 與移動途中簡單吃；照片沒有留下足以確認品項的餐點畫面。" },
+  { food: "途中在咖啡館吃了麵包點心；回程再到超市買飲料、牛奶、米與零食，回住宿簡單用餐。" },
+  { food: "園內午餐吃漢堡、薯條與米飯熱食；雨中休息時，也分食了一個大麵包點心。" },
+  { food: "在 Experimentarium 吃自助式午餐，餐盤裡有主食、沙拉與水果；回到市中心後再吃冰品。" },
+  { food: "把外帶餐盒帶回住宿：米飯、烤馬鈴薯、肉類與番茄小黃瓜沙拉；另外買了 Andersen Bakery 的麵包。" },
+  { food: "早上吃住宿提供的自助早餐，有麵包、點心、熱食與水果；參觀水族館前後，也在海邊簡單吃了一餐。" },
+  { food: "這天吃了煎餃與日式熱食；店名沒有留在照片裡。" },
+  { food: "在 Skansen 園內餐廳吃大盤熱食與配菜；確切菜名沒有留下，但這一餐替接下來的大園區補足了體力。" },
+  { food: "登機後吃泰航機上餐，照片留下托盤熱食；其餘餐點沒有足以確認內容的畫面。" },
+  { food: "這天的餐點沒有留下足以辨認品項的畫面；照片確認的是曼谷轉機、返台航段與桃園抵達。" },
 ];
 
 const dayJournal: DayJournal[] = [
@@ -331,14 +317,10 @@ export default function Home() {
               <article className={`day-card ${expanded ? "expanded" : ""}`} key={`${stop.date}-${stop.title}`}>
                 <button className="day-summary" onClick={() => setOpen(expanded ? null : index)} aria-expanded={expanded} aria-controls={detailId} aria-label={`${stop.date} ${stop.title}，${expanded ? "收合" : "展開"}詳細內容`}>
                   <span className="date">{stop.date}</span><span className="day-icon"><DayIcon type={stop.icon} /></span><span className="day-title"><small>{stop.city}</small><strong>{stop.title}</strong><em>{stop.detail}</em></span>
-                  {media.cover ? (
-                    <span className="day-photo"><img src={media.cover.photo} alt={media.cover.alt} width="720" height="480" loading="lazy" decoding="async" style={media.cover.position ? { objectPosition: media.cover.position } : undefined} /></span>
-                  ) : (
-                    <span className="day-photo day-photo-private" aria-label="依隱私原則不顯示照片">
-                      <span className="privacy-photo-icon"><DayIcon type={stop.icon} /></span>
-                      <span className="privacy-photo-copy"><small>PRIVACY FIRST</small><strong>依隱私原則<br />不顯示照片</strong></span>
-                    </span>
-                  )}
+                  <span className="day-photo day-photo-private" aria-label="照片暫時不公開">
+                    <span className="privacy-photo-icon"><DayIcon type={stop.icon} /></span>
+                    <span className="privacy-photo-copy"><small>PHOTOS PAUSED</small><strong>照片暫時<br />不公開</strong></span>
+                  </span>
                   <span className="plus" aria-hidden="true">{expanded ? "−" : "+"}</span>
                 </button>
                 <div className="day-detail" id={detailId} hidden={!expanded}>
@@ -352,20 +334,6 @@ export default function Home() {
                     </ol>
                     <aside className="travel-moment"><small>TRAVEL MOMENT / 旅途片刻</small><p>{journal.moment}</p></aside>
                   </section>
-                  {media.gallery.length > 0 && (
-                    <section className="day-gallery" aria-labelledby={`${detailId}-gallery`}>
-                      <div className="day-gallery-heading">
-                        <small id={`${detailId}-gallery`}>MORE FROM THE DAY / 更多片刻</small>
-                        <span aria-hidden="true">{String(media.gallery.length).padStart(2, "0")} FRAMES</span>
-                      </div>
-                      <div className={`day-gallery-grid gallery-count-${media.gallery.length}`}>
-                        {media.gallery.map((photo, photoIndex) => <figure className="day-gallery-frame" key={photo.photo}>
-                          <img src={photo.photo} alt={photo.alt} width="1200" height="800" loading="lazy" decoding="async" style={photo.position ? { objectPosition: photo.position } : undefined} />
-                          <span className="day-gallery-index" aria-hidden="true">{String(photoIndex + 1).padStart(2, "0")}</span>
-                        </figure>)}
-                      </div>
-                    </section>
-                  )}
                   <div className="trip-meta"><div><small>STAY</small><p>{stop.stay ?? "—"}</p></div><div><small>GETTING AROUND</small><p>{stop.move ?? "—"}</p></div><div><small>FAMILY NOTE</small><p>{stop.note ?? "—"}</p></div></div>
                   <div className="day-facts"><div className="meal-detail"><small>WHAT WE ATE / 這天吃什麼</small><p>{media.food}</p></div><div className="steps-detail"><small>STEPS / 這天走了幾步</small><p><strong>{formatSteps(steps)}</strong><span>步</span></p></div></div>
                 </div>
