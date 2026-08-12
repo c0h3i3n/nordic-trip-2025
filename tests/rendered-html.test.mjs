@@ -1,6 +1,11 @@
 import assert from "node:assert/strict";
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import test from "node:test";
+
+const mediaManifest = JSON.parse(
+  readFileSync(new URL("../privacy/journey-media-manifest.json", import.meta.url), "utf8"),
+);
+const approvedMediaPaths = new Set(mediaManifest.assets.map(({ path }) => path));
 
 async function render() {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
@@ -47,12 +52,21 @@ test("server-renders the Nordic Summer itinerary", async () => {
   assert.match(html, /aria-controls="day-2-details"/);
 
   const dailyPhotos = html.match(/<img\b[^>]*src="journey\/day-\d{2}-[^"]+\.jpg"[^>]*>/g) ?? [];
-  assert.equal(dailyPhotos.length, 18, "renders one representative photo for every itinerary day");
-  assert.match(dailyPhotos[0], /loading="eager"/);
-  for (const photo of dailyPhotos.slice(1)) assert.match(photo, /loading="lazy"/);
+  assert.equal(dailyPhotos.length, 12, "renders only the 12 approved representative photos");
+  for (const photo of dailyPhotos) {
+    assert.match(photo, /loading="(?:eager|lazy)"/);
+    const src = photo.match(/\bsrc="([^"]+)"/)?.[1] ?? "";
+    assert.ok(approvedMediaPaths.has(src), `daily photo is privacy-approved: ${src}`);
+  }
+
+  assert.equal(
+    html.match(/\bday-photo-private\b/g)?.length,
+    6,
+    "renders privacy-first placeholders for six excluded covers",
+  );
 
   const galleryPhotos = html.match(/<img\b[^>]*src="journey\/gallery\/[^"]+\.jpg"[^>]*>/g) ?? [];
-  assert.equal(galleryPhotos.length, 27, "renders all 27 gallery photos");
+  assert.equal(galleryPhotos.length, 2, "renders only the two approved gallery photos");
   for (const photo of galleryPhotos) {
     assert.match(photo, /loading="lazy"/, "gallery photos use lazy loading");
     assert.match(photo, /decoding="async"/, "gallery photos decode asynchronously");
@@ -62,6 +76,7 @@ test("server-renders the Nordic Summer itinerary", async () => {
 
     const src = photo.match(/\bsrc="([^"]+)"/)?.[1] ?? "";
     assert.ok(src, "every gallery photo has a source");
+    assert.ok(approvedMediaPaths.has(src), `gallery photo is privacy-approved: ${src}`);
     assert.ok(
       existsSync(new URL(`../public/${src}`, import.meta.url)),
       `gallery photo exists on disk: ${src}`,
@@ -70,14 +85,14 @@ test("server-renders the Nordic Summer itinerary", async () => {
 
   const gallerySections = (html.match(/<section\b[^>]*>/g) ?? [])
     .filter((section) => /\bclass="[^"]*\bday-gallery\b[^"]*"/.test(section));
-  assert.equal(gallerySections.length, 18, "renders one gallery section for every itinerary day");
+  assert.equal(gallerySections.length, 2, "renders galleries only when approved photos exist");
 
   const galleryLabelIds = gallerySections.map((section) => {
     const labelId = section.match(/\baria-labelledby="([^"]+)"/)?.[1] ?? "";
     assert.ok(labelId, "every gallery section is labelled");
     return labelId;
   });
-  assert.equal(new Set(galleryLabelIds).size, 18, "gallery aria-labelledby values are unique");
+  assert.equal(new Set(galleryLabelIds).size, 2, "gallery aria-labelledby values are unique");
   for (const labelId of galleryLabelIds) {
     const escapedLabelId = labelId.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     assert.equal(
@@ -86,6 +101,13 @@ test("server-renders the Nordic Summer itinerary", async () => {
       `gallery label id is present exactly once: ${labelId}`,
     );
   }
+
+  const allJourneyPhotos = html.match(/<img\b[^>]*src="(journey\/[^"]+\.jpg)"[^>]*>/g) ?? [];
+  assert.equal(allJourneyPhotos.length, 14, "publishes exactly the 14 privacy-approved images");
+  const renderedJourneyPaths = new Set(
+    allJourneyPhotos.map((photo) => photo.match(/\bsrc="([^"]+)"/)?.[1] ?? ""),
+  );
+  assert.deepEqual(renderedJourneyPaths, approvedMediaPaths);
 
   assert.equal(html.match(/class="journal-detail"/g)?.length, 18);
   assert.equal(html.match(/class="journal-step"/g)?.length, 54);

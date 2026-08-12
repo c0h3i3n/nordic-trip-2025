@@ -68,6 +68,13 @@ button { font:inherit; }
 .day-title { display:grid; grid-template-columns:100px minmax(210px,.7fr) 1fr; gap:25px; align-items:center; }.day-title small { color:var(--coral); font-weight:900; }.day-title strong { font-size:20px; }.day-title em { font-style:normal; font-size:13px; line-height:1.6; opacity:.72; }
 .day-photo { width:234px; height:146px; display:block; overflow:hidden; border:2px solid rgba(244,239,223,.55); border-radius:var(--radius-sm); background:rgba(244,239,223,.08); box-shadow:5px 5px 0 rgba(0,0,0,.28); transition:transform .25s ease,box-shadow .25s ease; }
 .day-photo img { display:block; width:100%; height:100%; object-fit:cover; transition:transform .45s ease,filter .3s ease; }
+.day-photo-private { position:relative; display:grid; grid-template-columns:48px minmax(0,1fr); gap:13px; align-items:center; padding:16px; background:repeating-linear-gradient(135deg,rgba(244,239,223,.09) 0,rgba(244,239,223,.09) 9px,rgba(244,239,223,.04) 9px,rgba(244,239,223,.04) 18px); }
+.day-photo-private:after { content:""; position:absolute; width:92px; height:92px; right:-34px; bottom:-45px; border:1px solid rgba(242,191,77,.28); border-radius:50%; box-shadow:0 0 0 8px rgba(242,191,77,.08); }
+.privacy-photo-icon { position:relative; z-index:1; width:46px; height:46px; display:grid; place-items:center; border:1px solid rgba(244,239,223,.5); border-radius:50%; color:var(--yellow); }
+.privacy-photo-icon svg { width:21px; height:21px; }
+.privacy-photo-copy { position:relative; z-index:1; display:grid; gap:5px; min-width:0; }
+.privacy-photo-copy small { color:var(--yellow); font-size:8px; font-weight:900; letter-spacing:.13em; }
+.privacy-photo-copy strong { color:var(--paper); font-size:12px; line-height:1.45; letter-spacing:.03em; }
 @media (hover:hover) { .day-summary:hover .day-photo { transform:translate(-2px,-2px); box-shadow:8px 8px 0 rgba(0,0,0,.28); }.day-summary:hover .day-photo img { transform:scale(1.04); filter:saturate(1.08); } }
 .plus { font-size:28px; font-weight:200; }.day-detail { padding:0 22px 34px 189px; animation:reveal .25s ease; }
 @keyframes reveal { from { opacity:0; transform:translateY(-8px); } }.day-detail small { font-size:9px; letter-spacing:.15em; color:var(--yellow); }.day-detail p { margin:6px 0 0; }
