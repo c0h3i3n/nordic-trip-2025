@@ -24,8 +24,10 @@ test("server-renders the Nordic Summer itinerary", async () => {
   assert.match(html, /每日行程/);
   assert.match(html, /斯德哥爾摩/);
   assert.match(html, /大英博物館/);
-  assert.match(html, /Oxford 學院一日遊/);
+  assert.match(html, /Oxford 學院與博德利圖書館/);
   assert.match(html, /Copenhagen Zoo/);
+  assert.match(html, /Experimentarium/);
+  assert.match(html, /Den Blå Planet/);
   assert.match(html, /Gamla stan/);
   assert.match(html, /曼谷 → 台北/);
   assert.match(html, /THE DAY \/ 一天的腳步/);
@@ -39,7 +41,6 @@ test("server-renders the Nordic Summer itinerary", async () => {
   assert.match(html, /15,703/);
   assert.match(html, /STEPS \/ 這天走了幾步/);
   assert.match(html, /每日旅行誌依照片與旅途資料整理/);
-  assert.match(html, /在泰航上吃過機上早餐；抵達倫敦後簡單用餐/);
   assert.doesNotMatch(html, /照片沒有留下可確認|沒有留下清楚餐點照片/);
   assert.match(html, /aria-pressed="true"/);
   assert.match(html, /aria-controls="day-2-details"/);
@@ -56,9 +57,22 @@ test("server-renders the Nordic Summer itinerary", async () => {
   assert.match(html, /<strong>7,771<\/strong>/);
   assert.match(html, /<strong>4,995<\/strong>/);
   assert.match(html, /<strong>走進大英博物館<\/strong>/);
-  assert.match(html, /<strong>從車頂看倫敦<\/strong>/);
+  assert.match(html, /<strong>走進 9¾ 月台<\/strong>/);
   assert.match(html, /<strong>到花園走走<\/strong>/);
   assert.doesNotMatch(html, /<strong>(上午|午後|傍晚)<\/strong>/);
+
+  const cards = html.match(/<article class="day-card[\s\S]*?<\/article>/g) ?? [];
+  const card = (date) => cards.find((item) => item.includes(`<span class="date">${date}</span>`)) ?? "";
+  assert.equal(cards.length, 18, "renders one itinerary card for every travel date");
+  assert.match(card("7.12"), /泰航機上餐/);
+  assert.match(card("7.13"), /羅塞塔石碑/);
+  assert.match(card("7.14"), /Five Guys/);
+  assert.match(card("7.15"), /Platform 9¾/);
+  assert.match(card("7.15"), /King’s Cross/);
+  assert.doesNotMatch(card("7.15"), /Five Guys/);
+  assert.match(card("7.25"), /Den Blå Planet/);
+  assert.match(card("7.25"), /丹麥國家水族館/);
+  assert.match(card("7.29"), /沒有留下足以辨認品項的畫面/);
 
   assert.doesNotMatch(html, /Warner Bros|Tivoli Gardens|Junibacken|Fjäderholmarna/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/i);

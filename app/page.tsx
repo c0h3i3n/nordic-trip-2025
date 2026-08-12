@@ -59,44 +59,44 @@ type DayJournal = {
 
 const stops: Stop[] = [
   { date: "7.12", city: "移動日", title: "台北 → 曼谷", detail: "從桃園出發，搭乘泰航抵達曼谷蘇凡納布機場，再轉機續飛倫敦。", stay: "機上／曼谷轉機", move: "TPE · BKK", note: "文件、藥品與過夜用品都放在手提行李。", icon: "flight" },
-  { date: "7.13", city: "倫敦", title: "曼谷 → 倫敦・大英博物館", detail: "07:15 飛抵 Heathrow；進城後走進 British Museum 的 Great Court 與展廳。", stay: "Premier Inn London City（Old Street）", move: "飛機＋大眾運輸＋步行", note: "長途飛行後只安排一個主角，慢慢調整時差。", icon: "museum" },
-  { date: "7.14", city: "倫敦", title: "西敏與皇家馬廄", detail: "從 Big Ben、國會大廈一路走到 Royal Mews，再穿過 St James’s Park。", stay: "Premier Inn London City（Old Street）", move: "地鐵＋步行", note: "第一個完整倫敦日，就從最經典的城市風景開始。", icon: "landmark" },
-  { date: "7.15", city: "倫敦", title: "敞篷巴士看倫敦", detail: "搭乘 open-top sightseeing bus 穿過市中心；這天也換住 Earl’s Court。", stay: "Premier Inn Kensington（Earl’s Court）", move: "觀光巴士＋地鐵", note: "坐著看城市，也替接下來的博物館日保留體力。", icon: "landmark" },
-  { date: "7.16", city: "倫敦", title: "科學與自然史", detail: "在 Science Museum 動手探索，再到 Natural History Museum 與花園看自然萬象。", stay: "Premier Inn Kensington（Earl’s Court）", move: "步行", note: "兩座博物館就在隔壁，中間隨時可以停下來休息。", icon: "museum" },
-  { date: "7.17", city: "倫敦", title: "Oxford 學院一日遊", detail: "從倫敦當日往返，走訪 Christ Church、Tom Quad、Great Hall 與學院迴廊。", stay: "Premier Inn Kensington（Earl’s Court）", move: "火車＋步行", note: "大學城石板路走得多，點心與輕便雨具都很有用。", icon: "landmark" },
+  { date: "7.13", city: "倫敦", title: "曼谷 → 倫敦・大英博物館", detail: "07:15 飛抵 Heathrow；進城後走進 British Museum，從 Great Court 看見羅塞塔石碑、埃及與希臘展廳。", stay: "Premier Inn London City（Old Street）", move: "飛機＋大眾運輸＋步行", note: "長途飛行後只安排一個主角，慢慢調整時差。", icon: "museum" },
+  { date: "7.14", city: "倫敦", title: "西敏・皇家馬廄・白金漢宮", detail: "從 Big Ben、國會大廈走到 Royal Mews，看過皇家馬車後穿過 St James’s Park，來到 Buckingham Palace。", stay: "Premier Inn London City（Old Street）", move: "地鐵＋步行", note: "第一個完整倫敦日，就從最經典的城市風景開始。", icon: "landmark" },
+  { date: "7.15", city: "倫敦", title: "從紅色巴士到 9¾ 月台", detail: "搭敞篷巴士與遊船看倫敦，再走訪 King’s Cross 的 Platform 9¾ 與 Covent Garden；這天也換住 Earl’s Court。", stay: "Premier Inn Kensington（Earl’s Court）", move: "觀光巴士＋遊船＋地鐵＋步行", note: "把幾段較遠的城市風景串在一起，途中也安排坐著休息。", icon: "landmark" },
+  { date: "7.16", city: "倫敦", title: "科學與自然史", detail: "在 Science Museum 動手做實驗，再到 Natural History Museum 看藍鯨骨架、恐龍與自然史展廳。", stay: "Premier Inn Kensington（Earl’s Court）", move: "步行", note: "兩座博物館就在隔壁，中間隨時可以停下來休息。", icon: "museum" },
+  { date: "7.17", city: "倫敦", title: "Oxford 學院與博德利圖書館", detail: "從倫敦當日往返，走訪 Christ Church、Great Hall、學院迴廊，以及 Bodleian Libraries 的 Divinity School。", stay: "Premier Inn Kensington（Earl’s Court）", move: "火車＋步行", note: "大學城石板路走得多，點心與輕便雨具都很有用。", icon: "landmark" },
   { date: "7.18", city: "移動日", title: "倫敦 → 比隆", detail: "15:35 從 Gatwick 起飛，17:10 抵達 Billund；入住木屋後採買、煮晚餐。", stay: "LEGOLAND Holiday Village", move: "火車＋飛機＋計程車", note: "抵達後沒有再排景點，木屋裡的第一頓晚餐就是旅行風景。", icon: "flight" },
-  { date: "7.19", city: "比隆", title: "LEGOLAND 一整天", detail: "10:00 入園，從 Miniland 一路玩到各式遊樂設施，傍晚再回木屋吃飯。", stay: "LEGOLAND Holiday Village", move: "步行約 5 分鐘", note: "把一整天完整留給孩子最期待的樂高主場。", icon: "theme-park" },
-  { date: "7.20", city: "移動日", title: "LEGO House → 哥本哈根", detail: "上午探索 LEGO House 與 Tree of Creativity，午後橫越丹麥前往哥本哈根。", stay: "ibis Styles Copenhagen Ørestad", move: "公車＋火車＋步行", note: "玩完再移動，抵達新城市後只辦入住、好好休息。", icon: "flight" },
+  { date: "7.19", city: "比隆", title: "LEGOLAND 一整天", detail: "從 Miniland、LEGO Ferrari 玩到 NINJAGO、Fire Academy 與 Dragen，傍晚再回木屋休息。", stay: "LEGOLAND Holiday Village", move: "步行約 5 分鐘", note: "把一整天完整留給孩子最期待的樂高主場。", icon: "theme-park" },
+  { date: "7.20", city: "移動日", title: "LEGO House → 哥本哈根", detail: "探索 Tree of Creativity、歷代盒組、創作區與互動積木體驗，午後再橫越丹麥前往哥本哈根。", stay: "ibis Styles Copenhagen Ørestad", move: "公車＋火車＋步行", note: "玩完再移動，抵達新城市後只辦入住、好好休息。", icon: "flight" },
   { date: "7.21", city: "哥本哈根", title: "小美人魚與彩色港灣", detail: "沿海走到 Little Mermaid，再穿過城市水岸，在 Nyhavn 看彩色屋與運河。", stay: "ibis Styles Copenhagen Ørestad", move: "地鐵＋公車＋步行", note: "下雨的港灣有另一種顏色，雨衣比撐傘更方便。", icon: "water" },
-  { date: "7.22", city: "哥本哈根", title: "雨中的 Copenhagen Zoo", detail: "前往 Frederiksberg 的 Copenhagen Zoo，在雨裡慢慢看動物與園區風景。", stay: "ibis Styles Copenhagen Ørestad", move: "地鐵＋公車＋步行", note: "雨具、替換衣物和幾段室內休息，讓全家繼續玩得自在。", icon: "park" },
-  { date: "7.23", city: "哥本哈根", title: "科學體驗與 LEGO 補給", detail: "在互動科學館玩工程、光學與泡泡展項，再回到市中心逛 LEGO Store。", stay: "ibis Styles Copenhagen Ørestad", move: "地鐵＋步行", note: "讓孩子自己動手的展館，常常比趕下一個景點更值得。", icon: "museum" },
-  { date: "7.24", city: "哥本哈根", title: "轉住 Kastrup・海濱慢行", detail: "換住機場附近的 Kastrup；在碼頭、海濱與街區散步，也留時間採買和休息。", stay: "Scandic CPH Strandpark", move: "地鐵＋火車＋步行", note: "旅程中段刻意放慢，整理行李也整理這幾天的回憶。", icon: "water" },
-  { date: "7.25", city: "移動日", title: "哥本哈根 → 斯德哥爾摩", detail: "白天留在 Kastrup 海邊；20:20 起飛，21:30 抵達 Stockholm 後進城入住。", stay: "Scandic Wallin", move: "步行＋地鐵＋飛機＋機場鐵路", note: "晚班機抵達後沒有再排活動，順利到飯店就是今天的終點。", icon: "flight" },
-  { date: "7.26", city: "斯德哥爾摩", title: "老城石板路漫遊", detail: "走過 Gamla stan 與 Riddarholmen 的石板路，再回 Norrmalm 逛街、喝咖啡、看水岸。", stay: "Scandic Wallin", move: "地鐵＋步行", note: "老城最適合慢慢走，也要替孩子安排隨時停下來的空間。", icon: "landmark" },
-  { date: "7.27", city: "斯德哥爾摩", title: "Skansen 一整天", detail: "走進露天博物館，看歷史建築、花園與北歐動物，把最後一個完整日留給 Skansen。", stay: "Scandic Wallin", move: "電車＋步行", note: "園區很大，好走的鞋派上用場，大家照自己的速度慢慢逛。", icon: "park" },
+  { date: "7.22", city: "哥本哈根", title: "雨中的 Copenhagen Zoo", detail: "在雨裡慢慢看長頸鹿、猴子、大象、熊貓、北極動物與鳥類，也穿插室內展區休息。", stay: "ibis Styles Copenhagen Ørestad", move: "地鐵＋公車＋步行", note: "雨具、替換衣物和幾段室內休息，讓全家繼續玩得自在。", icon: "park" },
+  { date: "7.23", city: "哥本哈根", title: "Experimentarium 與 LEGO 補給", detail: "在 Experimentarium 玩連鎖機械、泡泡、水桌與救援模擬，再回市中心走過 Amagertorv、逛 LEGO Store。", stay: "ibis Styles Copenhagen Ørestad", move: "地鐵＋步行", note: "讓孩子自己動手的展館，常常比趕下一個景點更值得。", icon: "museum" },
+  { date: "7.24", city: "哥本哈根", title: "轉住 Kastrup・海濱慢行", detail: "換住機場附近的 Kastrup；逛過 Flying Tiger、麵包店與街區後，再到碼頭和海濱慢慢散步。", stay: "Scandic CPH Strandpark", move: "地鐵＋火車＋步行", note: "旅程中段刻意放慢，整理行李也整理這幾天的回憶。", icon: "water" },
+  { date: "7.25", city: "移動日", title: "Den Blå Planet → 斯德哥爾摩", detail: "白天走進丹麥國家水族館，看鯊魚與水中生態；20:20 起飛，21:30 抵達 Stockholm 後進城入住。", stay: "Scandic Wallin", move: "步行＋地鐵＋飛機＋機場鐵路", note: "晚班機抵達後沒有再排活動，順利到飯店就是今天的終點。", icon: "flight" },
+  { date: "7.26", city: "斯德哥爾摩", title: "老城・王宮與騎士島", detail: "走過 Gamla stan、Stockholm Palace 與 Riddarholmen Church，再到水岸和 HAY 設計店逛逛。", stay: "Scandic Wallin", move: "地鐵＋步行", note: "老城最適合慢慢走，也要替孩子安排隨時停下來的空間。", icon: "landmark" },
+  { date: "7.27", city: "斯德哥爾摩", title: "Skansen 一整天", detail: "走進露天博物館，看歷史街屋、玻璃工坊、花園與北歐動物，把最後一個完整日留給 Skansen。", stay: "Scandic Wallin", move: "電車＋步行", note: "園區很大，好走的鞋派上用場，大家照自己的速度慢慢逛。", icon: "park" },
   { date: "7.28", city: "移動日", title: "斯德哥爾摩 → 曼谷", detail: "退房後搭機場鐵路到 Arlanda、完成退稅；13:50 搭乘泰航飛往曼谷。", stay: "機上", move: "Arlanda Express＋飛機", note: "護照、退稅文件與重要物品全部隨身攜帶。", icon: "flight" },
   { date: "7.29", city: "移動日", title: "曼谷 → 台北", detail: "在曼谷轉機後續飛台北，13:05 抵達桃園；領回行李，也把 18 天帶回家。", stay: "回到家", move: "BKK · TPE", note: "旅程在行李轉盤旁收尾，照片則把每一天重新帶回眼前。", icon: "flight" },
 ];
 
 const dayMedia: DayMedia[] = [
-  { photo: "journey/day-01-departure.jpg", alt: "機場航廈裡準備出發的旅行風景", food: "旅程從泰航機上餐開始；在曼谷轉機時，再用飲料與點心接力。" },
-  { photo: "journey/day-02-british-museum.jpg", alt: "倫敦大英博物館外觀", food: "在泰航上吃過機上早餐；抵達倫敦後簡單用餐，第一天沒有特別記下店名。" },
-  { photo: "journey/day-03-royal-mews.jpg", alt: "皇家馬廄裡的典藏展示", food: "逛倫敦的空檔，在市區簡單吃了一餐；那天忙著看風景，沒有特別記下店名與菜色。" },
-  { photo: "journey/day-04-london-bus.jpg", alt: "紅色敞篷觀光巴士穿過倫敦街景", food: "搭著紅色巴士逛倫敦，也在 Five Guys 坐下來吃了一餐。" },
-  { photo: "journey/day-05-science-museum.jpg", alt: "科學博物館裡色彩鮮明的實驗展示", food: "博物館之間簡單吃了一餐；那天鏡頭忙著記下展品，餐點便沒有留下特寫。" },
-  { photo: "journey/day-06-oxford.jpg", alt: "Oxford 學院裡覆滿綠意的石造迴廊", food: "在 Oxford 市區用餐，路上也吃了些點心；店名沒有特別記下來。" },
-  { photo: "journey/day-07-billund-cabin.jpg", alt: "比隆假日村裡的紅色木屋", food: "搭機前先吃了點心；到了比隆木屋，晚餐是自己煮的義大利麵與煎肉丁。" },
-  { photo: "journey/day-08-legoland.jpg", alt: "LEGOLAND 園區裡的積木海盜船水景", food: "白天在 LEGOLAND 園區簡單用餐，晚餐則回到木屋解決。" },
-  { photo: "journey/day-09-lego-house.jpg", alt: "LEGO House 裡的樂高歷史展示", food: "在 LEGO House 與移動途中簡單吃；這天的店名與餐點沒有被鏡頭記住。" },
-  { photo: "journey/day-10-nyhavn.jpg", alt: "Nyhavn 運河旁的一排彩色房屋", food: "逛超市買了飲料、牛奶、米與零食，回飯店簡單吃上一餐。" },
-  { photo: "journey/day-11-copenhagen-zoo.jpg", alt: "Copenhagen Zoo 園區裡的動物棲地", food: "在動物園裡簡單吃了一餐；雨天的園區被好好記下，餐點則沒有留下特寫。" },
-  { photo: "journey/day-12-copenhagen-city.jpg", alt: "哥本哈根市中心的廣場與街景", food: "在互動科學館和哥本哈根市中心之間順路用餐；這一餐沒有特別入鏡。" },
-  { photo: "journey/day-13-kastrup.jpg", alt: "Kastrup 海濱碼頭與飯店風景", food: "在 Kastrup 街區採買、簡單外食；店名沒記下，倒是海濱的慢步調留了下來。" },
-  { photo: "journey/day-14-stockholm-metro.jpg", alt: "前往斯德哥爾摩途中所見的城市交通風景", food: "白天在 Kastrup 簡單用餐；傍晚搭機前後，則以機場裡的餐食為主。" },
-  { photo: "journey/day-15-gamla-stan.jpg", alt: "Gamla stan 老城的石板街道與建築", food: "漫步 Gamla stan 時順路用餐；那天把注意力都留給老城，沒有特別記下店名與菜色。" },
-  { photo: "journey/day-16-skansen.jpg", alt: "Skansen 園區裡的北歐歷史建築與綠地", food: "在 Skansen 園區裡簡單用餐；鏡頭都留給老房子與綠地，餐點沒有留下特寫。" },
-  { photo: "journey/day-17-arlanda.jpg", alt: "Arlanda 機場裡準備返程的航班風景", food: "在 Arlanda 機場用餐，登機後接著吃泰航機上餐。" },
-  { photo: "journey/day-18-homecoming.jpg", alt: "返抵桃園機場時的行李轉盤", food: "曼谷轉機時吃了點心，返台航段再以泰航機上餐為旅程收尾。" },
+  { photo: "journey/day-01-departure.jpg", alt: "機場航廈裡準備出發的旅行風景", food: "旅程從泰航機上餐開始；照片裡留下托盤熱食、麵包與飲料，菜名沒有特別記下。" },
+  { photo: "journey/day-02-british-museum.jpg", alt: "倫敦大英博物館外觀", food: "抵達日的餐食沒有留下足以確認店名或菜色的畫面；這一頁只記下照片能確認的部分。" },
+  { photo: "journey/day-03-royal-mews.jpg", alt: "皇家馬廄裡的典藏展示", food: "白天以沙拉簡單補充體力，之後到 Five Guys 吃漢堡與薯條。" },
+  { photo: "journey/day-04-london-bus.jpg", alt: "紅色敞篷觀光巴士穿過倫敦街景", food: "換到 Earl’s Court 後，在房間煮義大利麵，搭配綠色蔬菜與沙拉。" },
+  { photo: "journey/day-05-science-museum.jpg", alt: "科學博物館裡色彩鮮明的實驗展示", food: "白天在博物館咖啡館吃麵包或三明治類餐點，配沙拉、馬鈴薯與飲料；回房後再吃米飯、肉類與蔬菜，另有藍莓和葡萄。" },
+  { photo: "journey/day-06-oxford.jpg", alt: "Oxford 學院裡覆滿綠意的石造迴廊", food: "這天的餐桌留下魚薯、義大利麵，以及漢堡配薯條；店名沒有記下來。" },
+  { photo: "journey/day-07-billund-cabin.jpg", alt: "比隆假日村裡的紅色木屋", food: "Gatwick 搭機前先吃簡餐，機上有麵包點心；抵達木屋後自煮義大利麵、煎肉丁與生菜。" },
+  { photo: "journey/day-08-legoland.jpg", alt: "LEGOLAND 園區裡的積木海盜船水景", food: "先在 Holiday Village 吃自助早餐，孩子也動手做鬆餅；白天在園區補充體力，傍晚再回木屋吃飯。" },
+  { photo: "journey/day-09-lego-house.jpg", alt: "LEGO House 裡的樂高歷史展示", food: "在 LEGO House 與移動途中簡單吃；照片沒有留下足以確認品項的餐點畫面。" },
+  { photo: "journey/day-10-nyhavn.jpg", alt: "Nyhavn 運河旁的一排彩色房屋", food: "途中在咖啡館吃了麵包點心；回程再到超市買飲料、牛奶、米與零食，回飯店簡單用餐。" },
+  { photo: "journey/day-11-copenhagen-zoo.jpg", alt: "Copenhagen Zoo 園區裡的動物棲地", food: "園內午餐吃漢堡、薯條與米飯熱食；雨中休息時，也分食了一個大麵包點心。" },
+  { photo: "journey/day-12-copenhagen-city.jpg", alt: "哥本哈根市中心的廣場與街景", food: "在 Experimentarium 吃自助式午餐，餐盤裡有主食、沙拉與水果；回到市中心後再吃冰品。" },
+  { photo: "journey/day-13-kastrup.jpg", alt: "Kastrup 海濱碼頭與飯店風景", food: "把外帶餐盒帶回飯店：米飯、烤馬鈴薯、肉類與番茄小黃瓜沙拉；另外買了 Andersen Bakery 的麵包。" },
+  { photo: "journey/day-14-stockholm-metro.jpg", alt: "前往斯德哥爾摩途中所見的城市交通風景", food: "早上吃 Scandic 自助早餐，有麵包、點心、熱食與水果；參觀水族館前後，也在海邊簡單吃了一餐。" },
+  { photo: "journey/day-15-gamla-stan.jpg", alt: "Gamla stan 老城的石板街道與建築", food: "這天吃了煎餃與日式熱食；店名沒有留在照片裡。" },
+  { photo: "journey/day-16-skansen.jpg", alt: "Skansen 園區裡的北歐歷史建築與綠地", food: "在 Skansen 園內餐廳吃大盤熱食與配菜；確切菜名沒有留下，但這一餐替接下來的大園區補足了體力。" },
+  { photo: "journey/day-17-arlanda.jpg", alt: "Arlanda 機場裡準備返程的航班風景", food: "登機後吃泰航機上餐，照片留下托盤熱食；其餘餐點沒有足以確認內容的畫面。" },
+  { photo: "journey/day-18-homecoming.jpg", alt: "返抵桃園機場時的行李轉盤", food: "這天的餐點沒有留下足以辨認品項的畫面；照片確認的是曼谷轉機、返台航段與桃園抵達。" },
 ];
 
 const dayJournal: DayJournal[] = [
@@ -112,30 +112,30 @@ const dayJournal: DayJournal[] = [
     segments: [
       { label: "抵達", text: "清晨 07:15 飛抵 Heathrow，完成入境後，搭乘大眾運輸進入倫敦。" },
       { label: "進城", text: "帶著行李往 Old Street 一帶移動，第一天刻意把步調放慢，先讓全家適應時差。" },
-      { label: "走進大英博物館", text: "走進 British Museum，從古典立面來到 Great Court，再慢慢探索館內展廳。" },
+      { label: "走進大英博物館", text: "從 Great Court 開始慢慢探索 British Museum；羅塞塔石碑、埃及文物與帕德嫩神廟展廳，都在照片裡留下了清楚的記號。" },
     ],
     moment: "長途飛行後只留一座博物館當主角，反而更能記住初見倫敦的心情。",
   },
   {
     segments: [
       { label: "走到西敏", text: "從 Big Ben 與國會大廈開始，以步行認識倫敦最經典的城市輪廓。" },
-      { label: "探訪皇家馬廄", text: "一路走到 Royal Mews，看看皇家馬廄與館內典藏，也遇見充滿英倫趣味的紀念小物。" },
-      { label: "穿過 St James’s Park", text: "穿過 St James’s Park，在城市地標與公園綠意之間，替第一個完整倫敦日收尾。" },
+      { label: "看皇家馬車", text: "一路走到 Royal Mews，看皇家馬廄、典藏馬車與金色國事馬車，在細節裡遇見另一種英倫歷史。" },
+      { label: "穿過公園到王宮", text: "穿過 St James’s Park 的綠意來到 Buckingham Palace，替第一個完整倫敦日收尾。" },
     ],
-    moment: "從鐘樓、皇家馬廄走進公園，同一天看見了倫敦莊重又輕鬆的兩種表情。",
+    moment: "從鐘樓、皇家馬車走進公園與王宮，同一天看見了倫敦莊重又輕鬆的兩種表情。",
   },
   {
     segments: [
-      { label: "登上紅色巴士", text: "搭上紅色敞篷觀光巴士，從較高的視角穿過倫敦市中心。" },
-      { label: "從車頂看倫敦", text: "讓巴士代替雙腳串起沿途街景，一邊看新舊建築交錯，一邊替隔天的博物館行程保留體力。" },
-      { label: "轉住 Earl’s Court", text: "轉往 Earl’s Court 入住新的飯店，並在 Five Guys 坐下來吃一頓簡單晚餐。" },
+      { label: "從巴士到河面", text: "搭上紅色敞篷觀光巴士穿過市中心，也從遊船上看 Thames 與 Tower Bridge，把不同高度的倫敦串在一起。" },
+      { label: "走進 9¾ 月台", text: "來到 King’s Cross，在 The Harry Potter Shop at Platform 9¾ 看魔杖與熟悉的魔法世界。" },
+      { label: "逛市集、換飯店", text: "走過 Covent Garden Apple Market 與周邊街區後，轉往 Earl’s Court 入住新的飯店，再回房煮晚餐。" },
     ],
-    moment: "有些城市適合慢慢走，也有些風景，要坐上敞篷巴士才看得見。",
+    moment: "從紅色巴士、河面一路走進魔法月台，這一天像把幾種不同的倫敦故事翻在同一頁。",
   },
   {
     segments: [
-      { label: "動手玩科學", text: "先到 Science Museum 動手探索，讓科學變成可以親自參與的遊戲。" },
-      { label: "走進自然史", text: "接著走進相鄰的 Natural History Museum，在展品之間認識更廣闊的自然世界。" },
+      { label: "動手玩科學", text: "先到 Science Museum 操作力學與工程展項，也參加桌上的化學實驗，讓科學變成可以親自參與的遊戲。" },
+      { label: "遇見藍鯨與恐龍", text: "接著走進 Natural History Museum，從 Hintze Hall 的藍鯨骨架逛到恐龍、化石與自然史展廳。" },
       { label: "到花園走走", text: "離開展館後到花園走走，讓一整天密集的新發現，在綠意中慢慢沉澱。" },
     ],
     moment: "兩座博物館就在彼此身旁，好奇心與休息時間也能自然地輪流出場。",
@@ -143,8 +143,8 @@ const dayJournal: DayJournal[] = [
   {
     segments: [
       { label: "出發", text: "從倫敦搭火車前往 Oxford，把這一天留給大學城的學院與石板路。" },
-      { label: "學院", text: "走訪 Christ Church、Tom Quad、Great Hall 與學院迴廊，在古老石牆間慢慢探索。" },
-      { label: "回程", text: "沿著綠意環繞的庭院與街道繼續散步，傍晚再搭火車返回倫敦，完成一日往返。" },
+      { label: "走進 Christ Church", text: "走訪教堂、Tom Quad、Great Hall 與學院迴廊，在古老石牆與彩繪玻璃之間慢慢探索。" },
+      { label: "看博德利的穹頂", text: "再走到 Bodleian Libraries 與 Divinity School，在扇形拱頂下停留後，傍晚搭火車返回倫敦。" },
     ],
     moment: "石造迴廊被夏日花草染上綠意，讓 Oxford 的歷史少了一點距離、多了一點生活感。",
   },
@@ -152,23 +152,23 @@ const dayJournal: DayJournal[] = [
     segments: [
       { label: "離開倫敦", text: "從倫敦搭火車前往 Gatwick，替英國這一段旅程收尾，也準備把步調切換到丹麥。" },
       { label: "飛往比隆", text: "15:35 從 Gatwick 起飛，17:10 抵達 Billund；領妥行李後，再搭計程車前往住宿。" },
-      { label: "木屋生活", text: "入住 LEGOLAND Holiday Village 的紅色木屋，先到附近採買，再煮義大利麵與煎肉丁當晚餐。" },
+      { label: "木屋生活", text: "入住 LEGOLAND Holiday Village 的紅色木屋，先到附近採買，再煮義大利麵、煎肉丁與生菜當晚餐。" },
     ],
     moment: "沒有再趕景點，樹林與草地間的小木屋，反而成了移動日最安靜、也最像家的風景。",
   },
   {
     segments: [
-      { label: "走進積木世界", text: "從木屋步行約 5 分鐘前往 LEGOLAND，10:00 入園，先從 Miniland 展開一整天的樂高冒險。" },
-      { label: "樂園慢慢玩", text: "把時間留給園內各式遊樂設施；積木城堡、海盜船水景與一座座模型，像走進放大的玩具盒。" },
+      { label: "早餐自己做鬆餅", text: "先在 Holiday Village 吃自助早餐，孩子也在鬆餅台動手做早餐，再從木屋步行約 5 分鐘前往 LEGOLAND。" },
+      { label: "玩遍積木世界", text: "從 Miniland、LEGO Ferrari、DUPLO 遊戲區與水族館，一路玩到 NINJAGO、Fire Academy 和 Dragen。" },
       { label: "回到木屋", text: "在園區簡單吃過東西後，傍晚步行回 Holiday Village，在木屋裡休息、吃晚餐。" },
     ],
     moment: "這一天沒有第二個目的地，只有孩子最期待的樂高主場，以及一家人願意陪著慢慢玩的時間。",
   },
   {
     segments: [
-      { label: "LEGO House", text: "上午走進 LEGO House，從 Tree of Creativity 開始探索，也回看不同年代的樂高盒組與積木設計。" },
-      { label: "橫越丹麥", text: "離開比隆後，接續公車與火車前往哥本哈根；窗外風景一路向東，旅程也切換到首都。" },
-      { label: "抵達 Ørestad", text: "步行前往 ibis Styles Copenhagen Ørestad，完成入住便留在飯店休息，沒有再安排新的景點。" },
+      { label: "創作自己的積木世界", text: "上午走進 LEGO House，從 Tree of Creativity、色彩創作區到城市與車輛互動體驗，親手完成一件件作品。" },
+      { label: "回看樂高歷史", text: "在展櫃裡回看不同年代的盒組與積木設計，也讓手環替互動體驗留下紀錄。" },
+      { label: "橫越丹麥到 Ørestad", text: "離開比隆後接續公車與火車前往哥本哈根；抵達 ibis Styles Copenhagen Ørestad 完成入住，便留在飯店休息。" },
     ],
     moment: "上午還沉浸在積木的色彩裡，傍晚已抵達另一座城市；中間的移動正好留下一點空白。",
   },
@@ -176,55 +176,55 @@ const dayJournal: DayJournal[] = [
     segments: [
       { label: "小美人魚", text: "搭乘大眾運輸後沿海步行，來到 Little Mermaid；從海邊的經典地標開始認識哥本哈根。" },
       { label: "城市水岸", text: "接著沿水岸穿過城市，在陰雨與海風之間慢慢走，讓港口、船隻與街景一路串起來。" },
-      { label: "Nyhavn", text: "抵達 Nyhavn，看運河兩旁的彩色房屋與往來遊船；離開前也到超市採買，再回飯店簡單用餐。" },
+      { label: "Nyhavn 與日常補給", text: "抵達 Nyhavn 看彩色房屋與往來遊船；途中在咖啡館吃麵包點心，回程再到超市採買。" },
     ],
     moment: "陰天沒有沖淡 Nyhavn 的顏色，反而讓那一排彩色屋在水邊顯得更鮮明。",
   },
   {
     segments: [
       { label: "前往動物園", text: "搭地鐵與公車前往 Frederiksberg，再步行進入 Copenhagen Zoo；雨勢也替今天定下慢慢走的節奏。" },
-      { label: "雨中看動物", text: "沿著園區觀看不同棲地與動物，戶外路線與室內展區交錯前進，也留下綠意濃密的園區風景。" },
-      { label: "用餐與休息", text: "在園區簡單吃了一餐，並穿插幾段室內休息；雨具與替換衣物，讓這一天仍能自在走完。" },
+      { label: "雨中看動物", text: "沿著園區看長頸鹿、猴子、大象、熊貓、紅熊貓與北極動物；戶外路線和室內展區交錯前進。" },
+      { label: "熱食與屋簷下的休息", text: "在園內吃漢堡、薯條與米飯熱食，也在雨中分食大麵包點心；雨具與幾段室內休息，讓這天自在走完。" },
     ],
     moment: "雨沒有把行程取消，只是讓大家走得更慢，也多看見了藏在屋簷與綠葉間的細節。",
   },
   {
     segments: [
-      { label: "互動科學館", text: "搭地鐵前往互動科學館，把這一天交給可以親手操作、反覆嘗試的展覽。" },
-      { label: "工程與光影", text: "一路體驗工程、光學與泡泡展項；比起只站著觀看，自己動手讓每個原理都更有記憶點。" },
-      { label: "回到市中心", text: "離開展館後回到哥本哈根市中心，在廣場與街區散步，也走進 LEGO Store 逛逛。" },
+      { label: "走進 Experimentarium", text: "搭地鐵前往 Experimentarium，先從戶外遊戲與館內互動展項開始，把這一天交給親手操作。" },
+      { label: "讓機械、泡泡與水動起來", text: "一路玩連鎖機械、泡泡實驗、水桌與救援模擬；比起只站著看，自己動手讓原理更有記憶點。" },
+      { label: "回到市中心吃冰", text: "離開展館後走過 Amagertorv 的 Stork Fountain，也進 LEGO Store 逛逛，最後用一份冰品替市區散步收尾。" },
     ],
     moment: "有些旅行記憶不是拍下一件展品，而是親手試過之後，大家仍一路聊著剛才發生了什麼。",
   },
   {
     segments: [
       { label: "前往 Kastrup", text: "從 Ørestad 移動到機場附近的 Kastrup，轉住 Scandic CPH Strandpark，讓接下來的跨城行程更從容。" },
-      { label: "海濱慢行", text: "放下行李後，在 Kastrup 的碼頭、海濱與街區散步；帆船停在港灣裡，城市的聲音也跟著安靜下來。" },
-      { label: "採買與整理", text: "在附近採買、簡單外食，再把時間留給休息與整理行李，為前往斯德哥爾摩做好準備。" },
+      { label: "逛街、吃麵包再看海", text: "放下行李後逛過 Flying Tiger 與麵包店，再走到碼頭和海濱；帆船停在港灣裡，城市的聲音也跟著安靜下來。" },
+      { label: "把晚餐帶回飯店", text: "把米飯、烤馬鈴薯、肉類與沙拉的外帶餐盒帶回房間，配上 Andersen Bakery 的麵包，再整理行李。" },
     ],
     moment: "旅程走到中段，窗外的碼頭與海面讓這一天自然慢了下來，也替回憶留出整理的空間。",
   },
   {
     segments: [
-      { label: "Kastrup 海濱", text: "離開丹麥前，把白天留給 Kastrup 海邊；沿著海濱慢慢走，也整理好前往下一座城市的行李。" },
-      { label: "飛往斯德哥爾摩", text: "前往機場後，搭乘 20:20 的班機離開哥本哈根，21:30 抵達 Stockholm。" },
-      { label: "進城入住", text: "搭機場鐵路進城，沿途經過別具特色的車站空間，最後抵達 Scandic Wallin 休息。" },
+      { label: "從早餐走向海面", text: "先吃 Scandic 自助早餐，再沿著 Kastrup 海邊走向外形如波浪般展開的 Den Blå Planet。" },
+      { label: "走進丹麥國家水族館", text: "在大型水槽與展區裡看鯊魚、魚群和不同水中生態，也到戶外海岸稍作停留。" },
+      { label: "飛往斯德哥爾摩", text: "前往機場後搭乘 20:20 的班機，21:30 抵達 Stockholm；再搭機場鐵路進城，抵達 Scandic Wallin 休息。" },
     ],
-    moment: "從 Kastrup 的海岸到斯德哥爾摩的城市車站，一天之內，北歐換了另一種顏色迎接我們。",
+    moment: "白天還隔著玻璃看水中世界，晚上已抵達另一座北方城市；Kastrup 的海岸替丹麥段落留下了完整句點。",
   },
   {
     segments: [
-      { label: "Gamla stan", text: "走進斯德哥爾摩老城，在赭黃色牆面與蜿蜒石板路之間慢慢散步，感受城市古老的紋理。" },
-      { label: "Riddarholmen", text: "接著走向 Riddarholmen，沿著老城與水岸繼續探索，讓島嶼、橋梁和城市天際線一路相伴。" },
-      { label: "回到 Norrmalm", text: "回到 Norrmalm 逛街、喝咖啡，也在水岸邊稍作停留，替步行的一天留下一段輕鬆收尾。" },
+      { label: "老城與王宮", text: "走進 Gamla stan，在赭黃色牆面、蜿蜒石板路與 Stockholm Palace 之間，感受城市古老的紋理。" },
+      { label: "走到騎士島教堂", text: "接著走向 Riddarholmen Church，沿著老城與水岸繼續探索，讓島嶼、橋梁和天際線一路相伴。" },
+      { label: "水岸與設計店", text: "離開老城後到水岸稍作停留，也走進 HAY 設計店看看北歐日常，替步行的一天輕鬆收尾。" },
     ],
     moment: "最讓人記住的未必是哪一座地標，而是陽光落在老牆與石板路上的那個安靜轉角。",
   },
   {
     segments: [
       { label: "前往 Skansen", text: "搭電車再步行前往 Skansen，把旅程最後一個完整日，全心留給這座露天博物館。" },
-      { label: "歷史與自然", text: "穿梭在歷史建築、花園與北歐動物之間；紅色木屋、茅草屋頂和花叢拼出一幅瑞典夏日風景。" },
-      { label: "慢慢走到盡興", text: "園區很大，大家照自己的速度邊走邊看，在需要時停下休息，不急著趕完所有角落。" },
+      { label: "老街、玻璃與花園", text: "穿梭在歷史街屋、玻璃工坊、花園與溫室之間；紅色木屋、茅草屋頂和花叢拼出瑞典夏日風景。" },
+      { label: "北歐動物慢慢看", text: "一路走到北歐動物區，大家照自己的速度邊走邊看，在需要時停下用餐休息，不急著趕完所有角落。" },
     ],
     moment: "這天沒有追著清單跑，只是在老房子與綠意之間，把最後一個完整旅行日過得很慢。",
   },
@@ -232,14 +232,14 @@ const dayJournal: DayJournal[] = [
     segments: [
       { label: "離開斯德哥爾摩", text: "退房後搭乘 Arlanda Express 前往機場，窗外的城市風景也逐漸換成返程的節奏。" },
       { label: "退稅與通關", text: "抵達 Arlanda 後完成退稅，帶著隨身文件與行李排隊通關，為長途飛行做好準備。" },
-      { label: "飛往曼谷", text: "13:50 搭乘泰航離開瑞典，在機上用餐、休息，也正式踏上回家的第一段航程。" },
+      { label: "飛往曼谷", text: "13:50 搭乘泰航離開瑞典，在機上吃過托盤熱食、休息，也正式踏上回家的第一段航程。" },
     ],
     moment: "站在機場隊伍裡，旅程還沒有真正結束，回憶卻已經開始一幕一幕浮現。",
   },
   {
     segments: [
-      { label: "曼谷轉機", text: "抵達曼谷後稍作停留，吃點東西、重新整理隨身物品，再接上飛往台北的航班。" },
-      { label: "最後一段飛行", text: "從曼谷續飛台北，在泰航機上吃完這趟旅程最後一份機上餐，也慢慢把時區調回家的方向。" },
+      { label: "曼谷轉機", text: "抵達曼谷後稍作停留，重新整理隨身物品，再跟著轉機指標接上飛往台北的航班。" },
+      { label: "最後一段飛行", text: "從曼谷續飛台北，窗外的雲層與機艙風景，也慢慢把時區調回家的方向。" },
       { label: "抵達桃園", text: "13:05 抵達桃園，通關後在行李轉盤前等待行李出現，18 天的旅程終於平安落地。" },
     ],
     moment: "行李回來了，人也回家了；那些走過的城市，留在照片裡，等著一次次把我們帶回北方。",
@@ -292,11 +292,11 @@ export default function Home() {
             <p className="stamp">18 DAYS<br />3 COUNTRIES<br />1 FAMILY</p>
           </div>
         </div>
-        <div className="ticker"><div>BRITISH MUSEUM ✦ OXFORD ✦ LEGO HOUSE ✦ NYHAVN ✦ SKANSEN ✦ SUMMER IN THE NORTH ✦ BRITISH MUSEUM ✦ OXFORD ✦ LEGO HOUSE ✦ NYHAVN ✦</div></div>
+        <div className="ticker"><div>BRITISH MUSEUM ✦ PLATFORM 9¾ ✦ OXFORD ✦ LEGO HOUSE ✦ DEN BLÅ PLANET ✦ NYHAVN ✦ SKANSEN ✦ SUMMER IN THE NORTH ✦</div></div>
       </header>
 
       <section className="route-section wrap" id="route">
-        <div className="section-heading"><p className="eyebrow">THE ROUTE</p><h2>一趟旅行，<br />四座城市。</h2><p>從倫敦的博物館與 Oxford 學院，走進丹麥的積木世界，再讓斯德哥爾摩的老城與露天博物館為旅程收尾。</p></div>
+        <div className="section-heading"><p className="eyebrow">THE ROUTE</p><h2>一趟旅行，<br />四座城市。</h2><p>從倫敦的博物館與 Oxford 學院，走進丹麥的積木世界、港灣與水族館，再讓斯德哥爾摩的老城與露天博物館為旅程收尾。</p></div>
         <div className="route-map">
           <div className="route-map-inner">
             <div className="route-track"></div>
