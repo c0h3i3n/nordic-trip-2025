@@ -246,6 +246,19 @@ const dayJournal: DayJournal[] = [
   },
 ];
 
+const dailySteps = [
+  7771, 10556, 14797, 11095, 11965, 14505, 10715, 15096, 11771,
+  15703, 13969, 9609, 10677, 11739, 10085, 12827, 11364, 4995,
+];
+
+const stepSummary = {
+  total: dailySteps.reduce((sum, steps) => sum + steps, 0),
+  average: Math.round(dailySteps.reduce((sum, steps) => sum + steps, 0) / dailySteps.length),
+  peak: Math.max(...dailySteps),
+};
+
+const formatSteps = (steps: number) => new Intl.NumberFormat("zh-TW").format(steps);
+
 const filters = ["全部", "倫敦", "比隆", "哥本哈根", "斯德哥爾摩", "移動日"] as const;
 
 export default function Home() {
@@ -291,6 +304,10 @@ export default function Home() {
           </div>
         </div>
         <div className="stats"><div><b>18</b><span>旅程天數</span></div><div><b>04</b><span>城市停留</span></div><div><b>03</b><span>旅行國家</span></div><div><b>∞</b><span>家庭回憶</span></div></div>
+        <aside className="steps-summary" aria-label="全程步數摘要">
+          <div className="steps-summary-copy"><p className="eyebrow">ON FOOT / 一路走過</p><h3>{formatSteps(stepSummary.total)} <small>步</small></h3><p>依這份手機步數紀錄，18 天的腳步把機場、博物館、積木世界、港灣與老城一段段串起來。</p></div>
+          <dl><div><dt>每日平均</dt><dd>{formatSteps(stepSummary.average)}<small>步</small></dd></div><div><dt>單日最高</dt><dd>{formatSteps(stepSummary.peak)}<small>步 · 7.21</small></dd></div></dl>
+        </aside>
       </section>
 
       <section className="days" id="days">
@@ -301,7 +318,7 @@ export default function Home() {
             {filters.map((item) => <button key={item} className={filter === item ? "active" : ""} aria-pressed={filter === item} onClick={() => { setFilter(item); setOpen(null); }}>{item}</button>)}
           </div>
           <div className="timeline">
-            {visible.map((stop) => { const index = stops.indexOf(stop); const media = dayMedia[index]; const journal = dayJournal[index]; const expanded = open === index; const detailId = `day-${index + 1}-details`; return (
+            {visible.map((stop) => { const index = stops.indexOf(stop); const media = dayMedia[index]; const journal = dayJournal[index]; const steps = dailySteps[index]; const expanded = open === index; const detailId = `day-${index + 1}-details`; return (
               <article className={`day-card ${expanded ? "expanded" : ""}`} key={`${stop.date}-${stop.title}`}>
                 <button className="day-summary" onClick={() => setOpen(expanded ? null : index)} aria-expanded={expanded} aria-controls={detailId} aria-label={`${stop.date} ${stop.title}，${expanded ? "收合" : "展開"}詳細內容`}>
                   <span className="date">{stop.date}</span><span className="day-icon"><DayIcon type={stop.icon} /></span><span className="day-title"><small>{stop.city}</small><strong>{stop.title}</strong><em>{stop.detail}</em></span>
@@ -320,7 +337,7 @@ export default function Home() {
                     <aside className="travel-moment"><small>TRAVEL MOMENT / 旅途片刻</small><p>{journal.moment}</p></aside>
                   </section>
                   <div className="trip-meta"><div><small>STAY</small><p>{stop.stay ?? "—"}</p></div><div><small>GETTING AROUND</small><p>{stop.move ?? "—"}</p></div><div><small>FAMILY NOTE</small><p>{stop.note ?? "—"}</p></div></div>
-                  <div className="meal-detail"><small>WHAT WE ATE / 這天吃什麼</small><p>{media.food}</p></div>
+                  <div className="day-facts"><div className="meal-detail"><small>WHAT WE ATE / 這天吃什麼</small><p>{media.food}</p></div><div className="steps-detail"><small>STEPS / 這天走了幾步</small><p><strong>{formatSteps(steps)}</strong><span>步</span></p></div></div>
                 </div>
               </article>
             );})}

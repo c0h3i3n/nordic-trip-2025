@@ -33,6 +33,11 @@ test("server-renders the Nordic Summer itinerary", async () => {
   assert.match(html, /清晨 07:15 飛抵 Heathrow/);
   assert.match(html, /長途飛行後只留一座博物館當主角/);
   assert.match(html, /WHAT WE ATE \/ 這天吃什麼/);
+  assert.match(html, /ON FOOT \/ 一路走過/);
+  assert.match(html, /209,239/);
+  assert.match(html, /11,624/);
+  assert.match(html, /15,703/);
+  assert.match(html, /STEPS \/ 這天走了幾步/);
   assert.match(html, /每日旅行誌依照片與旅途資料整理/);
   assert.match(html, /在泰航上吃過機上早餐；抵達倫敦後簡單用餐/);
   assert.doesNotMatch(html, /照片沒有留下可確認|沒有留下清楚餐點照片/);
@@ -47,6 +52,9 @@ test("server-renders the Nordic Summer itinerary", async () => {
   assert.equal(html.match(/class="journal-detail"/g)?.length, 18);
   assert.equal(html.match(/class="journal-step"/g)?.length, 54);
   assert.equal(html.match(/TRAVEL MOMENT \/ 旅途片刻/g)?.length, 18);
+  assert.equal(html.match(/class="steps-detail"/g)?.length, 18);
+  assert.match(html, /<strong>7,771<\/strong>/);
+  assert.match(html, /<strong>4,995<\/strong>/);
   assert.match(html, /<strong>走進大英博物館<\/strong>/);
   assert.match(html, /<strong>從車頂看倫敦<\/strong>/);
   assert.match(html, /<strong>到花園走走<\/strong>/);
