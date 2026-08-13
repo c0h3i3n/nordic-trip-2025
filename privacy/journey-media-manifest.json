@@ -5,5 +5,132 @@
     "end": "2025-07-29"
   },
   "reviewMode": "manual-privacy-review",
-  "assets": []
+  "assets": [
+    {
+      "path": "journey/open/day-01.jpg",
+      "date": "2025-07-12",
+      "status": "SAFE",
+      "category": "environment",
+      "sha256": "813c108854b465de0b23a01d61f19329a145d8b1e70c1c29b82dc94fe241e5d2"
+    },
+    {
+      "path": "journey/open/day-02.jpg",
+      "date": "2025-07-13",
+      "status": "SAFE",
+      "category": "architecture",
+      "sha256": "1478e4374471e2486524bfe0c607303257b2850cffc8cbd5cd36e51b81b35c30"
+    },
+    {
+      "path": "journey/open/day-03.jpg",
+      "date": "2025-07-14",
+      "status": "SAFE",
+      "category": "architecture",
+      "sha256": "1b321256b5475b025be2a3ba6db886753b3c22b8ed1ea478bfab9c6096c2fbff"
+    },
+    {
+      "path": "journey/open/day-04.jpg",
+      "date": "2025-07-15",
+      "status": "SAFE",
+      "category": "travel-object",
+      "sha256": "374f2d8228a7e58cef0b4914884d89b303adc9c5a0ca04d5a0e596f33b5eac6b"
+    },
+    {
+      "path": "journey/open/day-05.jpg",
+      "date": "2025-07-16",
+      "status": "SAFE",
+      "category": "architecture",
+      "sha256": "c1b75fbdf80adac4a9eb8ea8eeea128bfc474a4ccf970476a92f39012a8bc579"
+    },
+    {
+      "path": "journey/open/day-06.jpg",
+      "date": "2025-07-17",
+      "status": "SAFE",
+      "category": "architecture",
+      "sha256": "88290618e316c7b4f4320678420066e2ef0187955fed9644ed70e3ea4de440cc"
+    },
+    {
+      "path": "journey/open/day-07.jpg",
+      "date": "2025-07-18",
+      "status": "SAFE",
+      "category": "environment",
+      "sha256": "86fc1949ebb15ff6cada227cbd671d5bac8b8a635228affd078932217ee303e0"
+    },
+    {
+      "path": "journey/open/day-08.jpg",
+      "date": "2025-07-19",
+      "status": "SAFE",
+      "category": "architecture",
+      "sha256": "eafd44f94bc42abfd0c1a2fd13faa22973c661dfbbd0715e66a6957954be55e4"
+    },
+    {
+      "path": "journey/open/day-09.jpg",
+      "date": "2025-07-20",
+      "status": "SAFE",
+      "category": "architecture",
+      "sha256": "7a13dc0558926be1b758595fff5aa30dfac90c6145ee8d56fd2ef73865685a80"
+    },
+    {
+      "path": "journey/open/day-10.jpg",
+      "date": "2025-07-21",
+      "status": "SAFE",
+      "category": "architecture",
+      "sha256": "eb322c5769125b654f061ac931d695611d5823ea0da2c5b2127da0cdcc6d7947"
+    },
+    {
+      "path": "journey/open/day-11.jpg",
+      "date": "2025-07-22",
+      "status": "SAFE",
+      "category": "nature",
+      "sha256": "f7248624af5e69bcba78210adb8063fc768f9734b33bdef339484d20ccb52faf"
+    },
+    {
+      "path": "journey/open/day-12.jpg",
+      "date": "2025-07-23",
+      "status": "SAFE",
+      "category": "architecture",
+      "sha256": "6d09e946987008f3fb8b4761b8e91c0497153daa38a64b2111110d05ce8920ed"
+    },
+    {
+      "path": "journey/open/day-13.jpg",
+      "date": "2025-07-24",
+      "status": "SAFE",
+      "category": "scenery",
+      "sha256": "9fdfd7ca7d4ee8fd194b40ea853b867438bb92848faad73737943e37e90485ad"
+    },
+    {
+      "path": "journey/open/day-14.jpg",
+      "date": "2025-07-25",
+      "status": "SAFE",
+      "category": "architecture",
+      "sha256": "72b19a9270be9d34beff93126437674ef98fc31d8c78e2506b8913f13daa49f0"
+    },
+    {
+      "path": "journey/open/day-15.jpg",
+      "date": "2025-07-26",
+      "status": "SAFE",
+      "category": "street",
+      "sha256": "78b5b71a4766187a4895d0fb3fe104e82fa6145eff49e0d607a1f606102afc06"
+    },
+    {
+      "path": "journey/open/day-16.jpg",
+      "date": "2025-07-27",
+      "status": "SAFE",
+      "category": "architecture",
+      "sha256": "7cdd35bfaad80d38e7e53e04d4e5dc55d55c190952cddbb6a7cd0fb4262718bd"
+    },
+    {
+      "path": "journey/open/day-17.jpg",
+      "date": "2025-07-28",
+      "status": "SAFE",
+      "category": "travel-object",
+      "sha256": "f1f683e7db31cdc71e8ce78e22a9bfc54220bad4e0b6c76b06002ef720063c89"
+    },
+    {
+      "path": "journey/open/day-18.jpg",
+      "date": "2025-07-29",
+      "status": "SAFE",
+      "category": "environment",
+      "sha256": "3433e370ff9c20131a26bd6875785e6bab927a9fa41eea1d42ab6004e830b947"
+    }
+  ]
 }

@@ -39,6 +39,14 @@ function DayIcon({ type }: { type: IconType }) {
 }
 
 type DayMedia = {
+  photo: string;
+  alt: string;
+  credit: {
+    creator: string;
+    source: string;
+    license: string;
+    licenseUrl?: string;
+  };
   food: string;
 };
 
@@ -74,24 +82,24 @@ const stops: Stop[] = [
 ];
 
 const dayMedia: DayMedia[] = [
-  { food: "旅程從泰航機上餐開始；照片裡留下托盤熱食、麵包與飲料，菜名沒有特別記下。" },
-  { food: "抵達日的餐食沒有留下足以確認店名或菜色的畫面；這一頁只記下照片能確認的部分。" },
-  { food: "白天吃了一份沙拉；Five Guys 的漢堡與薯條，也留在這天的照片裡。" },
-  { food: "這天再次到 Five Guys 吃漢堡與薯條；回到倫敦市區住宿後，也自煮義大利麵、綠色蔬菜與沙拉。" },
-  { food: "白天在博物館咖啡館吃麵包或三明治類餐點，配沙拉、馬鈴薯與飲料；回到住宿後再吃米飯、肉類與蔬菜，另有藍莓和葡萄。" },
-  { food: "Oxford 一日往返途中有簡單補給；照片沒有留下足以確認菜色或店名的完整餐桌畫面。" },
-  { food: "照片裡有魚薯、義大利麵和漢堡薯條；搭機前後另有簡餐與機上麵包點心，抵達木屋後再自煮義大利麵、煎肉丁與生菜。" },
-  { food: "先在木屋住宿區吃自助早餐，孩子也動手做鬆餅；白天在園區補充體力，傍晚再回木屋吃飯。" },
-  { food: "在 LEGO House 與移動途中簡單吃；照片沒有留下足以確認品項的餐點畫面。" },
-  { food: "途中在咖啡館吃了麵包點心；回程再到超市買飲料、牛奶、米與零食，回住宿簡單用餐。" },
-  { food: "園內午餐吃漢堡、薯條與米飯熱食；雨中休息時，也分食了一個大麵包點心。" },
-  { food: "在 Experimentarium 吃自助式午餐，餐盤裡有主食、沙拉與水果；回到市中心後再吃冰品。" },
-  { food: "把外帶餐盒帶回住宿：米飯、烤馬鈴薯、肉類與番茄小黃瓜沙拉；另外買了 Andersen Bakery 的麵包。" },
-  { food: "早上吃住宿提供的自助早餐，有麵包、點心、熱食與水果；參觀水族館前後，也在海邊簡單吃了一餐。" },
-  { food: "這天吃了煎餃與日式熱食；店名沒有留在照片裡。" },
-  { food: "在 Skansen 園內餐廳吃大盤熱食與配菜；確切菜名沒有留下，但這一餐替接下來的大園區補足了體力。" },
-  { food: "登機後吃泰航機上餐，照片留下托盤熱食；其餘餐點沒有足以確認內容的畫面。" },
-  { food: "這天的餐點沒有留下足以辨認品項的畫面；照片確認的是曼谷轉機、返台航段與桃園抵達。" },
+  { photo: "journey/open/day-01.jpg", alt: "曼谷蘇凡納布機場停機坪與航廈", credit: { creator: "calflier001", source: "https://commons.wikimedia.org/wiki/File:BANGKOK_SUVARNHUMBI_AIRPORT_THAILAND_FEB_2013_(8521151110).jpg", license: "CC BY-SA 2.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0" }, food: "旅程從泰航機上餐開始；照片裡留下托盤熱食、麵包與飲料，菜名沒有特別記下。" },
+  { photo: "journey/open/day-02.jpg", alt: "大英博物館 Great Court 的玻璃穹頂", credit: { creator: "Andreas Praefcke", source: "https://commons.wikimedia.org/wiki/File:Great_Court_British_Museum_2011.jpg", license: "Public Domain" }, food: "抵達日的餐食沒有留下足以確認店名或菜色的畫面；這一頁只記下照片能確認的部分。" },
+  { photo: "journey/open/day-03.jpg", alt: "倫敦 Big Ben 鐘樓建築細節", credit: { creator: "Diego Delso", source: "https://commons.wikimedia.org/wiki/File:Big_Ben,_Londres,_Inglaterra,_2014-08-07,_DD_014.JPG", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0" }, food: "白天吃了一份沙拉；Five Guys 的漢堡與薯條，也留在這天的照片裡。" },
+  { photo: "journey/open/day-04.jpg", alt: "夜色中的倫敦紅色雙層巴士", credit: { creator: "0x010C", source: "https://commons.wikimedia.org/wiki/File:2016-02_red_double-decker_bus_london_01.jpg", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0" }, food: "這天再次到 Five Guys 吃漢堡與薯條；回到倫敦市區住宿後，也自煮義大利麵、綠色蔬菜與沙拉。" },
+  { photo: "journey/open/day-05.jpg", alt: "倫敦自然史博物館歷史建築圖像", credit: { creator: "Encyclopædia Britannica, 1911", source: "https://commons.wikimedia.org/wiki/File:1911_Britannica-Architecture-Natural_History_Museum.png", license: "Public Domain" }, food: "白天在博物館咖啡館吃麵包或三明治類餐點，配沙拉、馬鈴薯與飲料；回到住宿後再吃米飯、肉類與蔬菜，另有藍莓和葡萄。" },
+  { photo: "journey/open/day-06.jpg", alt: "Oxford Radcliffe Camera 圓形石造建築", credit: { creator: "Vysotsky", source: "https://commons.wikimedia.org/wiki/File:2019_Radcliffe_Camera_Oxford.jpg", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0" }, food: "Oxford 一日往返途中有簡單補給；照片沒有留下足以確認菜色或店名的完整餐桌畫面。" },
+  { photo: "journey/open/day-07.jpg", alt: "倫敦 Heathrow 機場控制塔", credit: { creator: "Adrian Pingstone", source: "https://commons.wikimedia.org/wiki/File:Heathrow.london.750pix.jpg", license: "Public Domain" }, food: "照片裡有魚薯、義大利麵和漢堡薯條；搭機前後另有簡餐與機上麵包點心，抵達木屋後再自煮義大利麵、煎肉丁與生菜。" },
+  { photo: "journey/open/day-08.jpg", alt: "Billund LEGO House 屋頂的藍白積木階梯", credit: { creator: "Sintakso", source: "https://commons.wikimedia.org/wiki/File:LEGO_house_exterior_02.jpg", license: "CC0", licenseUrl: "https://creativecommons.org/publicdomain/zero/1.0" }, food: "先在木屋住宿區吃自助早餐，孩子也動手做鬆餅；白天在園區補充體力，傍晚再回木屋吃飯。" },
+  { photo: "journey/open/day-09.jpg", alt: "LEGO House 室內彩色積木牆與紅色樓梯", credit: { creator: "Sintakso", source: "https://commons.wikimedia.org/wiki/File:LEGO_house_interior_stairs.jpg", license: "CC0", licenseUrl: "https://creativecommons.org/publicdomain/zero/1.0" }, food: "在 LEGO House 與移動途中簡單吃；照片沒有留下足以確認品項的餐點畫面。" },
+  { photo: "journey/open/day-10.jpg", alt: "哥本哈根 Nyhavn 的彩色房屋立面", credit: { creator: "Jebulon", source: "https://commons.wikimedia.org/wiki/File:Nyhavn_55_Copenhagen.jpg", license: "CC0", licenseUrl: "https://creativecommons.org/publicdomain/zero/1.0" }, food: "途中在咖啡館吃了麵包點心；回程再到超市買飲料、牛奶、米與零食，回住宿簡單用餐。" },
+  { photo: "journey/open/day-11.jpg", alt: "Copenhagen Zoo 的歷史象舍與大象", credit: { creator: "Daderot", source: "https://commons.wikimedia.org/wiki/File:General_view_-_Copenhagen_Zoo_-_DSC09119.JPG", license: "CC0", licenseUrl: "https://creativecommons.org/publicdomain/zero/1.0" }, food: "園內午餐吃漢堡、薯條與米飯熱食；雨中休息時，也分食了一個大麵包點心。" },
+  { photo: "journey/open/day-12.jpg", alt: "Experimentarium Hellerup 的現代建築外觀", credit: { creator: "Johan Wessman / News Øresund", source: "https://commons.wikimedia.org/wiki/File:20171005_Experimentarium_Hellerup_0062_(37729624156).jpg", license: "CC BY 2.0", licenseUrl: "https://creativecommons.org/licenses/by/2.0" }, food: "在 Experimentarium 吃自助式午餐，餐盤裡有主食、沙拉與水果；回到市中心後再吃冰品。" },
+  { photo: "journey/open/day-13.jpg", alt: "Kastrup Strandpark 通往海上的木棧道", credit: { creator: "Guillaume Baviere", source: "https://commons.wikimedia.org/wiki/File:Kastrup_Strandpark_01.jpg", license: "CC BY-SA 2.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0" }, food: "把外帶餐盒帶回住宿：米飯、烤馬鈴薯、肉類與番茄小黃瓜沙拉；另外買了 Andersen Bakery 的麵包。" },
+  { photo: "journey/open/day-14.jpg", alt: "丹麥國家水族館 Den Blå Planet 的銀色建築", credit: { creator: "Daniel", source: "https://commons.wikimedia.org/wiki/File:Blue_Planet_(Copenhagen).jpg", license: "CC BY 2.0", licenseUrl: "https://creativecommons.org/licenses/by/2.0" }, food: "早上吃住宿提供的自助早餐，有麵包、點心、熱食與水果；參觀水族館前後，也在海邊簡單吃了一餐。" },
+  { photo: "journey/open/day-15.jpg", alt: "斯德哥爾摩 Gamla Stan 狹窄老城街道", credit: { creator: "OleNeitzel", source: "https://commons.wikimedia.org/wiki/File:Alley_in_Gamla_Stan,_Stockholm.jpg", license: "CC BY 4.0", licenseUrl: "https://creativecommons.org/licenses/by/4.0" }, food: "這天吃了煎餃與日式熱食；店名沒有留在照片裡。" },
+  { photo: "journey/open/day-16.jpg", alt: "Skansen 園區內的歷史城市建築", credit: { creator: "Schölla Schwarz", source: "https://commons.wikimedia.org/wiki/File:City_House_in_Skansen_-_panoramio.jpg", license: "CC BY 3.0", licenseUrl: "https://creativecommons.org/licenses/by/3.0" }, food: "在 Skansen 園內餐廳吃大盤熱食與配菜；確切菜名沒有留下，但這一餐替接下來的大園區補足了體力。" },
+  { photo: "journey/open/day-17.jpg", alt: "藍天下準備降落的客機", credit: { creator: "Jakobsundin", source: "https://commons.wikimedia.org/wiki/File:SAS_Airbus_A319_landing.jpg", license: "CC BY-SA 3.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0" }, food: "登機後吃泰航機上餐，照片留下托盤熱食；其餘餐點沒有足以確認內容的畫面。" },
+  { photo: "journey/open/day-18.jpg", alt: "桃園國際機場第二航廈與控制塔", credit: { creator: "Heeheemalu", source: "https://commons.wikimedia.org/wiki/File:Control_Tower_and_Terminal_2,_Taiwan_Taoyuan_International_Airport_20230708.jpg", license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0" }, food: "這天的餐點沒有留下足以辨認品項的畫面；照片確認的是曼谷轉機、返台航段與桃園抵達。" },
 ];
 
 const dayJournal: DayJournal[] = [
@@ -302,7 +310,7 @@ export default function Home() {
       <section className="days" id="days">
         <div className="wrap">
           <div className="days-head"><div><p className="eyebrow">DAY BY DAY</p><h2>每日行程</h2></div><p>點開每一天，沿著三段行程重走旅途，再查看住宿、交通、餐食與旅途片刻。</p></div>
-          <p className="food-source-note"><span>ABOUT THIS JOURNAL</span>每日旅行誌依照片與旅途資料整理；能確認的景點、移動與餐桌記憶才寫下，沒有被鏡頭記住的細節不補寫。</p>
+          <p className="food-source-note"><span>ABOUT THIS JOURNAL</span>每日旅行誌依照片與旅途資料整理；每日代表圖來自 Wikimedia Commons 開放授權素材，不是本次家庭旅程的原始照片，完整來源與授權列於頁尾。</p>
           <div className="filters" role="group" aria-label="依城市篩選">
             {filters.map((item) => <button key={item} className={filter === item ? "active" : ""} aria-pressed={filter === item} onClick={() => { setFilter(item); setOpen(null); }}>{item}</button>)}
           </div>
@@ -311,9 +319,9 @@ export default function Home() {
               <article className={`day-card ${expanded ? "expanded" : ""}`} key={`${stop.date}-${stop.title}`}>
                 <button className="day-summary" onClick={() => setOpen(expanded ? null : index)} aria-expanded={expanded} aria-controls={detailId} aria-label={`${stop.date} ${stop.title}，${expanded ? "收合" : "展開"}詳細內容`}>
                   <span className="date">{stop.date}</span><span className="day-icon"><DayIcon type={stop.icon} /></span><span className="day-title"><small>{stop.city}</small><strong>{stop.title}</strong><em>{stop.detail}</em></span>
-                  <span className="day-photo day-photo-private" aria-label="照片暫時不公開">
-                    <span className="privacy-photo-icon"><DayIcon type={stop.icon} /></span>
-                    <span className="privacy-photo-copy"><small>PHOTOS PAUSED</small><strong>照片暫時<br />不公開</strong></span>
+                  <span className="day-photo">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={media.photo} alt={media.alt} width="720" height="480" loading={index === 0 ? "eager" : "lazy"} decoding="async" />
                   </span>
                   <span className="plus" aria-hidden="true">{expanded ? "−" : "+"}</span>
                 </button>
@@ -345,6 +353,21 @@ export default function Home() {
           <article><span>03</span><h3>北歐天氣會變</h3><p>薄外套和輕便雨具在哥本哈根派上用場；遇上雨，也不必取消整天的風景。</p></article>
         </div>
         <div className="quote"><span>“</span><p>我們不是趕完一張行程表，<br />而是在四座城市裡，<em>一起長出回憶。</em></p></div>
+      </section>
+
+      <section className="photo-credits wrap" aria-labelledby="photo-credits-title">
+        <div className="photo-credits-heading">
+          <p className="eyebrow">OPEN PHOTO CREDITS</p>
+          <h2 id="photo-credits-title">公開照片來源</h2>
+          <p>每日代表圖均取自 Wikimedia Commons，使用 Public Domain、CC0 或允許重用的 Creative Commons 授權；網站副本僅做尺寸調整、裁切與 metadata 移除。</p>
+        </div>
+        <ol>
+          {dayMedia.map((media, index) => <li key={media.photo}>
+            <span>{String(index + 1).padStart(2, "0")} · {stops[index].date}</span>
+            <a href={media.credit.source} target="_blank" rel="noreferrer">{media.alt}</a>
+            <small>© {media.credit.creator} · {media.credit.licenseUrl ? <a href={media.credit.licenseUrl} target="_blank" rel="noreferrer">{media.credit.license}</a> : media.credit.license}</small>
+          </li>)}
+        </ol>
       </section>
 
       <footer><div className="wrap"><div><p className="eyebrow">NORDIC SUMMER · 2025</p><h2>See you<br />up north.</h2></div><div className="footer-route"><span>台北</span><i>→</i><span>曼谷</span><i>→</i><span>倫敦</span><i>→</i><span>比隆</span><i>→</i><span>哥本哈根</span><i>→</i><span>斯德哥爾摩</span><i>→</i><span>曼谷</span><i>→</i><span>台北</span></div><a className="to-top" href="#top" aria-label="回到頂端">↑</a></div></footer>

@@ -55,19 +55,24 @@ test("server-renders the Nordic Summer itinerary", async () => {
   assert.match(html, /aria-controls="day-2-details"/);
 
   assert.equal(
-    html.match(/\bday-photo-private\b/g)?.length,
-    18,
-    "renders a no-photo placeholder for every travel date",
+    html.match(/\bday-photo-private\b/g)?.length ?? 0,
+    0,
+    "renders no personal-photo placeholders after open photos are selected",
   );
 
   const allJourneyPhotos = html.match(/<img\b[^>]*src="(journey\/[^"]+\.jpg)"[^>]*>/g) ?? [];
-  assert.equal(allJourneyPhotos.length, 0, "publishes no journey photos while photos are paused");
+  assert.equal(allJourneyPhotos.length, 18, "publishes one approved open-license photo per date");
   const renderedJourneyPaths = new Set(
     allJourneyPhotos.map((photo) => photo.match(/\bsrc="([^"]+)"/)?.[1] ?? ""),
   );
   assert.deepEqual(renderedJourneyPaths, approvedMediaPaths);
-  assert.match(html, /PHOTOS PAUSED/);
-  assert.match(html, /照片暫時/);
+  assert.match(html, /OPEN PHOTO CREDITS/);
+  assert.match(html, /Wikimedia Commons/);
+  assert.match(html, /Public Domain/);
+  assert.match(html, /CC BY-SA 4\.0/);
+  assert.equal(html.match(/commons\.wikimedia\.org\/wiki\/File:/g)?.length, 18);
+  assert.equal(html.match(/loading="eager"/g)?.length, 1);
+  assert.equal(html.match(/loading="lazy"/g)?.length, 17);
   assert.doesNotMatch(html, /MORE FROM THE DAY/);
 
   assert.equal(html.match(/class="journal-detail"/g)?.length, 18);

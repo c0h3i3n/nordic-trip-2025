@@ -20,6 +20,24 @@ const LOCKED_SCOPE = Object.freeze({ start: "2025-07-12", end: "2025-07-29" });
 // This list is intentionally code-reviewed and closed. Updating manifest hashes
 // cannot add a path, date, or category that is not explicitly approved here.
 const APPROVED_ASSETS = Object.freeze([
+  ["journey/open/day-01.jpg", "2025-07-12", "environment"],
+  ["journey/open/day-02.jpg", "2025-07-13", "architecture"],
+  ["journey/open/day-03.jpg", "2025-07-14", "architecture"],
+  ["journey/open/day-04.jpg", "2025-07-15", "travel-object"],
+  ["journey/open/day-05.jpg", "2025-07-16", "architecture"],
+  ["journey/open/day-06.jpg", "2025-07-17", "architecture"],
+  ["journey/open/day-07.jpg", "2025-07-18", "environment"],
+  ["journey/open/day-08.jpg", "2025-07-19", "architecture"],
+  ["journey/open/day-09.jpg", "2025-07-20", "architecture"],
+  ["journey/open/day-10.jpg", "2025-07-21", "architecture"],
+  ["journey/open/day-11.jpg", "2025-07-22", "nature"],
+  ["journey/open/day-12.jpg", "2025-07-23", "architecture"],
+  ["journey/open/day-13.jpg", "2025-07-24", "scenery"],
+  ["journey/open/day-14.jpg", "2025-07-25", "architecture"],
+  ["journey/open/day-15.jpg", "2025-07-26", "street"],
+  ["journey/open/day-16.jpg", "2025-07-27", "architecture"],
+  ["journey/open/day-17.jpg", "2025-07-28", "travel-object"],
+  ["journey/open/day-18.jpg", "2025-07-29", "environment"],
 ].map(([path, date, category]) => Object.freeze({ path, date, category })));
 
 const ALLOWED_CATEGORIES = new Set([
@@ -86,7 +104,7 @@ async function collectPublishedFiles(directory) {
       if (stats.isSymbolicLink()) {
         fail(`Symlinks are forbidden in public journey media: ${publicPath}`);
       } else if (stats.isDirectory()) {
-        if (publicPath !== "journey/gallery") {
+        if (publicPath !== "journey/open") {
           fail(`Unexpected directory in public journey media: ${publicPath}`);
         }
         await walk(absolutePath);
