@@ -72,9 +72,9 @@ button { font:inherit; }
 .day-summary { width:100%; border:0; color:inherit; background:transparent; display:grid; grid-template-columns:74px 46px minmax(0,1fr) 234px 32px; gap:18px; align-items:center; padding:20px 22px; text-align:left; cursor:pointer; }
 .date { font-family:Georgia,serif; font-style:italic; font-size:18px; color:var(--yellow); }.day-icon { border:1px solid rgba(244,239,223,.4); width:42px; height:42px; border-radius:50%; display:grid; place-items:center; color:var(--paper); }.day-icon svg { width:19px; height:19px; stroke-width:1.8; }
 .day-title { display:grid; grid-template-columns:100px minmax(210px,.7fr) 1fr; gap:25px; align-items:center; }.day-title small { color:var(--coral); font-weight:900; }.day-title strong { font-size:20px; }.day-title em { font-style:normal; font-size:13px; line-height:1.6; opacity:.72; }
-.day-photo { width:234px; height:146px; display:block; overflow:hidden; border:2px solid rgba(244,239,223,.55); border-radius:var(--radius-sm); background:rgba(244,239,223,.08); box-shadow:5px 5px 0 rgba(0,0,0,.28); transition:transform .25s ease,box-shadow .25s ease; }
-.day-photo img { display:block; width:100%; height:100%; object-fit:cover; transition:transform .45s ease,filter .3s ease; }
-@media (hover:hover) { .day-summary:hover .day-photo { transform:translate(-2px,-2px); box-shadow:8px 8px 0 rgba(0,0,0,.28); }.day-summary:hover .day-photo img { transform:scale(1.04); filter:saturate(1.08); } }
+.day-photo { width:234px; height:146px; display:block; overflow:hidden; border:2px solid rgba(244,239,223,.55); border-radius:var(--radius-sm); background:var(--paper); box-shadow:5px 5px 0 rgba(0,0,0,.28); transition:transform .25s ease,box-shadow .25s ease; }
+.day-photo img { display:block; width:100%; height:100%; object-fit:contain; background:var(--paper); transition:filter .3s ease; }
+@media (hover:hover) { .day-summary:hover .day-photo { transform:translate(-2px,-2px); box-shadow:8px 8px 0 rgba(0,0,0,.28); }.day-summary:hover .day-photo img { filter:saturate(1.08); } }
 .plus { font-size:28px; font-weight:200; }.day-detail { padding:0 22px 34px 189px; animation:reveal .25s ease; }
 @keyframes reveal { from { opacity:0; transform:translateY(-8px); } }.day-detail small { font-size:9px; letter-spacing:.15em; color:var(--yellow); }.day-detail p { margin:6px 0 0; }
 .journal-detail { padding-top:25px; border-top:1px solid rgba(244,239,223,.2); }
