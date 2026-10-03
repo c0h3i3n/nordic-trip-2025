@@ -102,7 +102,7 @@ test("server-renders the Nordic Summer itinerary", async () => {
   assert.match(card("7.25"), /丹麥國家水族館/);
   assert.match(card("7.25"), /飛往斯德哥爾摩/);
   assert.match(card("7.26"), /Gamla stan/);
-  assert.match(card("7.29"), /沒有留下足以辨認品項的畫面/);
+  assert.match(card("7.29"), /餐點品項未能確認/);
 
   assert.doesNotMatch(html, /Warner Bros|Tivoli Gardens|Junibacken|Fjäderholmarna/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/i);
